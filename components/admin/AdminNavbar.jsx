@@ -1,4 +1,4 @@
-// C:\Users\Siddharathan\Desktop\gocart-ecommerce-full-stack\components\admin\AdminNavbar.jsx
+﻿// C:\Users\Siddharathan\Desktop\gocart-ecommerce-full-stack\components\admin\AdminNavbar.jsx
 'use client'
 import { useUser, UserButton } from "@clerk/nextjs"
 import Link from "next/link"
@@ -20,8 +20,8 @@ const AdminNavbar = ({ setSidebarOpen, sidebarOpen }) => {
                 </button>
                 
                 <Link href="/admin" className="relative text-2xl md:text-3xl font-semibold text-slate-800">
-                    <span className="text-green-600">Gym</span>Desk<span className="text-green-600 text-4xl leading-0">.</span>
-                    <div className="absolute text-xs font-semibold -top-1 -right-13 px-2 py-0.5 rounded-full flex items-center gap-2 text-white bg-green-600">
+                    <span className="text-red-600">Activate</span> Gym<span className="text-red-600 text-4xl leading-0">.</span>
+                    <div className="absolute text-xs font-semibold -top-1 -right-13 px-2 py-0.5 rounded-full flex items-center gap-2 text-white bg-red-600">
                         Admin
                     </div>
                 </Link>
@@ -48,7 +48,7 @@ const AdminNavbar = ({ setSidebarOpen, sidebarOpen }) => {
                                 {[1, 2, 3].map((item) => (
                                     <div key={item} className="px-4 py-3 hover:bg-slate-50 border-b border-slate-100 last:border-0">
                                         <div className="flex items-start">
-                                            <div className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-3">
+                                            <div className="h-8 w-8 rounded-full bg-red-100 flex items-center justify-center text-red-600 mr-3">
                                                 <span className="text-xs font-medium">N</span>
                                             </div>
                                             <div className="flex-1">
@@ -61,7 +61,7 @@ const AdminNavbar = ({ setSidebarOpen, sidebarOpen }) => {
                                 ))}
                             </div>
                             <div className="px-4 py-2 border-t border-slate-100">
-                                <button className="text-sm text-green-600 font-medium hover:text-green-700 w-full text-center">
+                                <button className="text-sm text-red-600 font-medium hover:text-red-700 w-full text-center">
                                     View all notifications
                                 </button>
                             </div>

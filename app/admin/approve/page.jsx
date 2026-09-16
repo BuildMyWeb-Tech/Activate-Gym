@@ -1,4 +1,4 @@
-// app/admin/approve/page.jsx
+﻿// app/admin/approve/page.jsx
 'use client';
 import BranchInfo from '@/components/admin/BranchInfo';
 import Loading from '@/components/Loading';
@@ -77,7 +77,7 @@ export default function AdminApprove() {
                 </span>
                 <button
                   onClick={() => toast.promise(handleAction(branch.id, 'APPROVE'), { loading: 'Approving...' })}
-                  className="px-4 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm font-medium flex items-center gap-2"
+                  className="px-4 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 text-sm font-medium flex items-center gap-2"
                 >
                   <CheckCircleIcon size={16} /> Approve
                 </button>

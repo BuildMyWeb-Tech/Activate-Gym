@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import React from 'react'
 import { CheckIcon, XIcon } from 'lucide-react'
 import Link from 'next/link'
@@ -59,9 +59,9 @@ export default function PricingPage() {
             ],
             cta: "Subscribe",
             most_popular: true,
-            bgGradient: "from-green-50 to-green-100",
-            borderColor: "border-green-200",
-            ctaColor: "bg-green-600 hover:bg-green-700 text-white"
+            bgGradient: "from-red-50 to-red-100",
+            borderColor: "border-red-200",
+            ctaColor: "bg-red-600 hover:bg-red-700 text-white"
         },
         {
             name: "Premium",
@@ -80,9 +80,9 @@ export default function PricingPage() {
             ],
             cta: "Subscribe",
             most_popular: false,
-            bgGradient: "from-blue-50 to-blue-100",
-            borderColor: "border-blue-200",
-            ctaColor: "bg-blue-600 hover:bg-blue-700 text-white"
+            bgGradient: "from-red-50 to-red-100",
+            borderColor: "border-red-200",
+            ctaColor: "bg-red-600 hover:bg-red-700 text-white"
         }
     ]
 
@@ -102,7 +102,7 @@ export default function PricingPage() {
                         className={`relative rounded-2xl shadow-sm border ${plan.borderColor} overflow-hidden transition-all hover:shadow-md transform hover:-translate-y-1 bg-gradient-to-br ${plan.bgGradient}`}
                     >
                         {plan.most_popular && (
-                            <div className="absolute top-0 right-0 bg-green-600 text-white text-xs font-bold px-3 py-1">
+                            <div className="absolute top-0 right-0 bg-red-600 text-white text-xs font-bold px-3 py-1">
                                 MOST POPULAR
                             </div>
                         )}
@@ -131,9 +131,9 @@ export default function PricingPage() {
                             <ul className="space-y-3">
                                 {plan.features.map((feature, i) => (
                                     <li key={i} className="flex items-start gap-3">
-                                        <div className={`mt-0.5 ${feature.included ? 'text-green-500' : 'text-slate-300'}`}>
+                                        <div className={`mt-0.5 ${feature.included ? 'text-red-500' : 'text-slate-300'}`}>
                                             {feature.included ? 
-                                                <CheckIcon size={18} className="text-green-500" /> : 
+                                                <CheckIcon size={18} className="text-red-500" /> : 
                                                 <XIcon size={18} className="text-slate-300" />
                                             }
                                         </div>

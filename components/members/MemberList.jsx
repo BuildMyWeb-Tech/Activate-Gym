@@ -1,4 +1,4 @@
-// components/members/MemberList.jsx
+﻿// components/members/MemberList.jsx
 'use client';
 import { useEffect, useState, useCallback } from 'react';
 import { useAuth } from '@clerk/nextjs';
@@ -78,13 +78,13 @@ export default function MemberList({ basePath }) {
       <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-slate-800 flex items-center gap-2">
-            <Users size={24} className="text-green-600" /> Members
+            <Users size={24} className="text-red-600" /> Members
           </h1>
           <p className="text-sm text-slate-500 mt-1">{pagination.total ?? 0} total members</p>
         </div>
         <Link
           href={`${basePath}/add`}
-          className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors"
+          className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-colors"
         >
           <UserPlus size={16} /> Register Member
         </Link>
@@ -100,7 +100,7 @@ export default function MemberList({ basePath }) {
               setQ(e.target.value);
             }}
             placeholder="Search by name or phone..."
-            className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400"
+            className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400"
           />
         </div>
         <select
@@ -109,7 +109,7 @@ export default function MemberList({ basePath }) {
             setPage(1);
             setStatus(e.target.value);
           }}
-          className="border border-slate-200 rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-green-100"
+          className="border border-slate-200 rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-red-100"
         >
           <option value="ALL">All Status</option>
           <option value="ACTIVE">Active</option>
@@ -153,7 +153,7 @@ export default function MemberList({ basePath }) {
                               className="w-9 h-9 rounded-full object-cover border border-slate-200"
                             />
                           ) : (
-                            <div className="w-9 h-9 rounded-full bg-green-100 flex items-center justify-center text-green-700 font-semibold text-sm">
+                            <div className="w-9 h-9 rounded-full bg-red-100 flex items-center justify-center text-red-700 font-semibold text-sm">
                               {m.fullName.charAt(0).toUpperCase()}
                             </div>
                           )}
@@ -166,7 +166,7 @@ export default function MemberList({ basePath }) {
                       </td>
                       <td className="px-5 py-3">
                         {m.deviceUserId ? (
-                          <span className="inline-flex items-center gap-1 text-xs text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">
+                          <span className="inline-flex items-center gap-1 text-xs text-red-600 bg-red-50 px-2 py-0.5 rounded-full">
                             <Fingerprint size={12} /> Linked
                           </span>
                         ) : (
@@ -175,7 +175,7 @@ export default function MemberList({ basePath }) {
                       </td>
                       <td className="px-5 py-3">
                         <span
-                          className={`text-xs font-medium px-2.5 py-1 rounded-full ${m.status === 'ACTIVE' ? 'bg-green-50 text-green-700' : 'bg-slate-100 text-slate-500'}`}
+                          className={`text-xs font-medium px-2.5 py-1 rounded-full ${m.status === 'ACTIVE' ? 'bg-red-50 text-red-700' : 'bg-slate-100 text-slate-500'}`}
                         >
                           {m.status}
                         </span>
@@ -185,14 +185,14 @@ export default function MemberList({ basePath }) {
                           <button
                             onClick={() => router.push(`${basePath}/${m.id}`)}
                             title="View"
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+                            className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors"
                           >
                             <Eye size={15} />
                           </button>
                           <button
                             onClick={() => router.push(`${basePath}/${m.id}/edit`)}
                             title="Edit"
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-green-600 hover:bg-green-50 transition-colors"
+                            className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors"
                           >
                             <Pencil size={15} />
                           </button>

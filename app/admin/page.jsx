@@ -31,17 +31,17 @@ import {
 } from 'recharts';
 
 const BRANCH_COLORS = {
-  ACTIVE: '#16a34a',
+  ACTIVE: '#E60012',
   PENDING: '#f59e0b',
   REJECTED: '#ef4444',
   INACTIVE: '#94a3b8',
 };
-const MEMBERSHIP_COLORS = { Active: '#16a34a', Expired: '#ef4444', Frozen: '#3b82f6' };
+const MEMBERSHIP_COLORS = { Active: '#E60012', Expired: '#ef4444', Frozen: '#CC0010' };
 
 function StatCard({ title, value, icon: Icon, color }) {
   const colorMap = {
-    green: { bg: 'bg-green-50', icon: 'bg-green-100 text-green-600', val: 'text-green-700' },
-    blue: { bg: 'bg-blue-50', icon: 'bg-blue-100 text-blue-600', val: 'text-blue-700' },
+    green: { bg: 'bg-red-50', icon: 'bg-red-100 text-red-600', val: 'text-red-700' },
+    blue: { bg: 'bg-red-50', icon: 'bg-red-100 text-red-600', val: 'text-red-700' },
     amber: { bg: 'bg-amber-50', icon: 'bg-amber-100 text-amber-600', val: 'text-amber-700' },
     red: { bg: 'bg-red-50', icon: 'bg-red-100 text-red-600', val: 'text-red-700' },
     purple: { bg: 'bg-purple-50', icon: 'bg-purple-100 text-purple-600', val: 'text-purple-700' },
@@ -175,7 +175,7 @@ export default function AdminDashboard() {
                 <XAxis dataKey="label" tick={{ fontSize: 10 }} />
                 <YAxis tick={{ fontSize: 10 }} tickFormatter={(v) => `₹${v}`} />
                 <Tooltip formatter={(v) => `₹${v}`} />
-                <Bar dataKey="revenue" fill="#16a34a" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="revenue" fill="#E60012" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           )}

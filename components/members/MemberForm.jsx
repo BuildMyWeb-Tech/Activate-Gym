@@ -1,4 +1,4 @@
-// components/members/MemberForm.jsx
+﻿// components/members/MemberForm.jsx
 'use client';
 import { useEffect, useState } from 'react';
 import { useAuth } from '@clerk/nextjs';
@@ -159,7 +159,7 @@ export default function MemberForm({ basePath, memberId = null }) {
             <div className="relative">
               <User size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               <input name="fullName" value={form.fullName} onChange={onChange} required
-                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400" />
+                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400" />
             </div>
           </div>
           <div>
@@ -167,7 +167,7 @@ export default function MemberForm({ basePath, memberId = null }) {
             <div className="relative">
               <Phone size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               <input name="phone" value={form.phone} onChange={onChange} required type="tel"
-                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400" />
+                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400" />
             </div>
           </div>
         </div>
@@ -180,7 +180,7 @@ export default function MemberForm({ basePath, memberId = null }) {
             <Hash size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input name="memberCode" value={form.memberCode}
               onChange={(e) => { setMemberCodeTouched(true); onChange(e); }}
-              className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400" />
+              className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400" />
           </div>
         </div>
 
@@ -190,13 +190,13 @@ export default function MemberForm({ basePath, memberId = null }) {
             <div className="relative">
               <Calendar size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               <input name="dob" value={form.dob} onChange={onChange} type="date"
-                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400" />
+                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400" />
             </div>
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1.5">Gender</label>
             <select name="gender" value={form.gender} onChange={onChange}
-              className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400">
+              className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400">
               <option value="">Select</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -210,7 +210,7 @@ export default function MemberForm({ basePath, memberId = null }) {
           <div className="relative">
             <MapPin size={15} className="absolute left-3 top-3 text-slate-400" />
             <textarea name="address" value={form.address} onChange={onChange} rows={2}
-              className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400 resize-none" />
+              className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400 resize-none" />
           </div>
         </div>
 
@@ -220,7 +220,7 @@ export default function MemberForm({ basePath, memberId = null }) {
             <div className="relative">
               <Shield size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               <input name="emergencyContactName" value={form.emergencyContactName} onChange={onChange} required
-                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400" />
+                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400" />
             </div>
           </div>
           <div>
@@ -228,7 +228,7 @@ export default function MemberForm({ basePath, memberId = null }) {
             <div className="relative">
               <Phone size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               <input name="emergencyContactNumber" value={form.emergencyContactNumber} onChange={onChange} required type="tel"
-                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400" />
+                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400" />
             </div>
           </div>
         </div>
@@ -240,7 +240,7 @@ export default function MemberForm({ basePath, memberId = null }) {
           <div className="relative">
             <Fingerprint size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input name="deviceUserId" value={form.deviceUserId} onChange={onChange} placeholder="e.g. 42"
-              className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400" />
+              className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400" />
           </div>
         </div>
 
@@ -248,7 +248,7 @@ export default function MemberForm({ basePath, memberId = null }) {
           <>
             <div className="pt-2 border-t border-slate-100">
               <label className="block text-sm font-medium text-slate-700 mb-2 flex items-center gap-1.5">
-                <Dumbbell size={15} className="text-green-600" /> Assign Membership Plan(s)
+                <Dumbbell size={15} className="text-red-600" /> Assign Membership Plan(s)
               </label>
               {plans.length === 0 ? (
                 <p className="text-xs text-slate-400">No active plans yet — add one from the Plans page first, or register the member without a plan for now.</p>
@@ -256,7 +256,7 @@ export default function MemberForm({ basePath, memberId = null }) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {plans.map((p) => (
                     <label key={p.id}
-                      className={`flex items-center gap-2 border rounded-lg px-3 py-2.5 text-sm cursor-pointer ${selectedPlanIds.includes(p.id) ? 'border-green-400 bg-green-50' : 'border-slate-200 hover:bg-slate-50'}`}>
+                      className={`flex items-center gap-2 border rounded-lg px-3 py-2.5 text-sm cursor-pointer ${selectedPlanIds.includes(p.id) ? 'border-red-400 bg-red-50' : 'border-slate-200 hover:bg-slate-50'}`}>
                       <input type="checkbox" checked={selectedPlanIds.includes(p.id)} onChange={() => togglePlan(p.id)}
                         className="accent-green-600" />
                       <span className="flex-1">
@@ -273,7 +273,7 @@ export default function MemberForm({ basePath, memberId = null }) {
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1.5">From Date</label>
                 <input name="fromDate" value={form.fromDate} onChange={onChange} type="date"
-                  className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400" />
+                  className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1.5">
@@ -287,7 +287,7 @@ export default function MemberForm({ basePath, memberId = null }) {
         )}
 
         <button type="submit" disabled={submitting}
-          className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white py-3 rounded-xl font-medium transition-all disabled:opacity-60 flex items-center justify-center gap-2">
+          className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white py-3 rounded-xl font-medium transition-all disabled:opacity-60 flex items-center justify-center gap-2">
           {submitting ? <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" /> : <Save size={16} />}
           {submitting ? 'Saving...' : isEdit ? 'Save Changes' : 'Register Member'}
         </button>

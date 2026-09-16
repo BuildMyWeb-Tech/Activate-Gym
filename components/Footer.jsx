@@ -1,4 +1,4 @@
-// components/Footer.jsx
+﻿// components/Footer.jsx
 'use client';
 
 import Link from 'next/link';
@@ -71,7 +71,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 py-12 border-b">
           <div className="lg:col-span-2">
             <Link href="/" className="text-3xl font-bold flex items-center gap-2">
-              <span className="bg-green-600 text-white px-2 py-1 rounded-lg">Gym</span>
+              <span className="bg-red-600 text-white px-2 py-1 rounded-lg">Gym</span>
               Desk
             </Link>
             <p className="mt-4 text-sm text-slate-500">
@@ -102,9 +102,9 @@ const Footer = () => {
                     <li key={j}>
                       <Link
                         href={link.path}
-                        className="flex items-start gap-2 text-sm text-slate-500 hover:text-green-600 transition"
+                        className="flex items-start gap-2 text-sm text-slate-500 hover:text-red-600 transition"
                       >
-                        <Icon size={16} className="mt-0.5 text-green-600" />
+                        <Icon size={16} className="mt-0.5 text-red-600" />
                         <span>{link.text}</span>
                       </Link>
                     </li>

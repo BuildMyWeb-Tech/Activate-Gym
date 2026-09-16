@@ -6,8 +6,8 @@ export default function SignInPage() {
       <div className="text-center">
         <div className="mb-6">
           <h1 className="text-3xl font-bold text-slate-800">
-            <span className="text-green-600">Gym</span>Desk
-            <span className="text-green-600 text-4xl">.</span>
+            <span className="text-red-600">Activate</span> Gym
+            <span className="text-red-600 text-4xl">.</span>
           </h1>
           <p className="text-slate-500 text-sm mt-1">Sign in to continue</p>
         </div>

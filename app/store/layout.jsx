@@ -2,8 +2,8 @@
 import StoreLayout from '@/components/store/StoreLayout';
 
 export const metadata = {
-  title: 'GymDesk. - Gym Dashboard',
-  description: 'GymDesk. - Gym Dashboard',
+  title: 'Activate Gym - Dashboard',
+  description: 'Activate Gym - Dashboard',
 };
 
 // No more SignedIn/SignedOut split.

@@ -1,4 +1,4 @@
-// components/admin/AdminSidebar.jsx
+﻿// components/admin/AdminSidebar.jsx
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -36,11 +36,11 @@ export default function AdminSidebar({ setSidebarOpen }) {
               onClick={() => setSidebarOpen?.(false)}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
                 isActive
-                  ? 'bg-green-50 text-green-700'
+                  ? 'bg-red-50 text-red-700'
                   : 'text-slate-600 hover:bg-slate-50 hover:text-slate-800'
               }`}
             >
-              <Icon size={18} className={isActive ? 'text-green-600' : 'text-slate-400'} />
+              <Icon size={18} className={isActive ? 'text-red-600' : 'text-slate-400'} />
               {label}
             </Link>
           );

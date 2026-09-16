@@ -1,4 +1,4 @@
-// components/OrderItem.jsx
+﻿// components/OrderItem.jsx
 'use client';
 import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
@@ -21,7 +21,7 @@ const STATUS_LABELS = {
 };
 
 const STATUS_COLORS = {
-  PENDING:          'bg-blue-100 text-blue-700',
+  PENDING:          'bg-red-100 text-red-700',
   CONFIRMED:        'bg-violet-100 text-violet-700',
   PACKED:           'bg-amber-100 text-amber-700',
   SHIPPED:          'bg-cyan-100 text-cyan-700',
@@ -113,7 +113,7 @@ export default function OrderItem({ order, onOrderUpdated }) {
                     ) : (
                       order.status === 'DELIVERED' && productId && (
                         <button onClick={() => setRatingModal({ orderId: order.id, productId })}
-                          className="text-green-500 hover:bg-green-50 text-xs px-2 py-1 rounded w-fit">
+                          className="text-red-500 hover:bg-red-50 text-xs px-2 py-1 rounded w-fit">
                           Rate Product
                         </button>
                       )
@@ -140,7 +140,7 @@ export default function OrderItem({ order, onOrderUpdated }) {
           <span className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold ${statusColor}`}>{statusLabel}</span>
           <div className="flex flex-col gap-1 mt-2">
             <button onClick={() => { setShowTracker(!showTracker); setShowTimeline(false); }}
-              className="inline-flex items-center gap-1 text-xs text-blue-500 hover:text-blue-700">
+              className="inline-flex items-center gap-1 text-xs text-red-500 hover:text-red-700">
               {showTracker ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
               {showTracker ? 'Hide tracker' : 'Track order'}
             </button>
@@ -204,7 +204,7 @@ export default function OrderItem({ order, onOrderUpdated }) {
             <span className="text-sm font-medium text-slate-800">₹{order.total.toLocaleString('en-IN')}</span>
           </div>
           <div className="mt-2 flex justify-center gap-4">
-            <button onClick={() => setShowTracker(!showTracker)} className="text-xs text-blue-500 flex items-center gap-1">
+            <button onClick={() => setShowTracker(!showTracker)} className="text-xs text-red-500 flex items-center gap-1">
               {showTracker ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
               {showTracker ? 'Hide tracker' : 'Track order'}
             </button>

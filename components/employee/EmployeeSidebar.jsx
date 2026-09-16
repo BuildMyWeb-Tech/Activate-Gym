@@ -1,4 +1,4 @@
-// components/employee/EmployeeSidebar.jsx
+﻿// components/employee/EmployeeSidebar.jsx
 'use client';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -109,17 +109,17 @@ export default function EmployeeSidebar({ branchInfo, employee, closeMobileMenu 
               className="w-11 h-11 rounded-full shadow border-2 border-white object-cover"
             />
           ) : (
-            <div className="w-11 h-11 rounded-full bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center text-white font-bold shadow">
+            <div className="w-11 h-11 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-white font-bold shadow">
               {branchInfo?.name?.charAt(0) || 'B'}
             </div>
           )}
-          <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-white" />
+          <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-red-500 rounded-full border-2 border-white" />
         </div>
 
         {!collapsed && (
           <div className="flex-1 min-w-0">
             <p className="text-slate-800 font-medium truncate text-sm">{branchInfo?.name}</p>
-            <span className="text-xs px-1.5 py-0.5 rounded-full font-medium bg-blue-100 text-blue-700">
+            <span className="text-xs px-1.5 py-0.5 rounded-full font-medium bg-red-100 text-red-700">
               Receptionist
             </span>
           </div>
@@ -146,12 +146,12 @@ export default function EmployeeSidebar({ branchInfo, employee, closeMobileMenu 
               key={link.href}
               href={link.href}
               onClick={() => closeMobileMenu?.()}
-              className={`relative flex items-center gap-3 p-2.5 transition-all hover:bg-slate-50 ${collapsed ? 'justify-center' : 'pl-5 pr-3'} ${isActive ? 'bg-gradient-to-r from-blue-50 to-slate-50 font-medium text-slate-800' : 'text-slate-500 hover:text-slate-600'}`}
+              className={`relative flex items-center gap-3 p-2.5 transition-all hover:bg-slate-50 ${collapsed ? 'justify-center' : 'pl-5 pr-3'} ${isActive ? 'bg-gradient-to-r from-red-50 to-slate-50 font-medium text-slate-800' : 'text-slate-500 hover:text-slate-600'}`}
             >
-              <link.icon size={17} className={isActive ? 'text-blue-500' : ''} />
+              <link.icon size={17} className={isActive ? 'text-red-500' : ''} />
               {!collapsed && <span className="truncate text-sm">{link.name}</span>}
               {isActive && (
-                <span className="absolute bg-gradient-to-b from-blue-400 to-blue-600 right-0 top-0 bottom-0 w-1.5 rounded-l" />
+                <span className="absolute bg-gradient-to-b from-red-500 to-red-700 right-0 top-0 bottom-0 w-1.5 rounded-l" />
               )}
             </Link>
           );

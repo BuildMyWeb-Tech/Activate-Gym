@@ -1,4 +1,4 @@
-// components/orders/OrderList.jsx
+﻿// components/orders/OrderList.jsx
 'use client';
 import { useEffect, useState, useCallback } from 'react';
 import { useAuth } from '@clerk/nextjs';
@@ -13,8 +13,8 @@ import { CreditCard, Plus, Search, Eye, MessageCircle, ChevronLeft, ChevronRight
 
 const statusColors = {
   PENDING: 'bg-amber-50 text-amber-700',
-  CONFIRMED: 'bg-green-50 text-green-700',
-  ACTIVE: 'bg-blue-50 text-blue-700',
+  CONFIRMED: 'bg-red-50 text-red-700',
+  ACTIVE: 'bg-red-50 text-red-700',
   CANCELLED: 'bg-red-50 text-red-700',
 };
 
@@ -66,10 +66,10 @@ export default function OrderList({ basePath }) {
     <div className="px-3 sm:px-6 py-4 sm:py-6 pb-28">
       <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <h1 className="text-2xl md:text-3xl font-bold text-slate-800 flex items-center gap-2">
-          <CreditCard size={24} className="text-green-600" /> Payments
+          <CreditCard size={24} className="text-red-600" /> Payments
         </h1>
         <Link href={`${basePath}/checkout`}
-          className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium">
+          className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium">
           <Plus size={16} /> New Checkout
         </Link>
       </div>
@@ -79,10 +79,10 @@ export default function OrderList({ basePath }) {
           <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
           <input value={q} onChange={(e) => { setPage(1); setQ(e.target.value); }}
             placeholder="Search by member name or phone..."
-            className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400" />
+            className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400" />
         </div>
         <select value={status} onChange={(e) => { setPage(1); setStatus(e.target.value); }}
-          className="border border-slate-200 rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-green-100">
+          className="border border-slate-200 rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-red-100">
           <option value="ALL">All Status</option>
           <option value="PENDING">Pending Payment</option>
           <option value="CONFIRMED">Confirmed</option>
@@ -120,11 +120,11 @@ export default function OrderList({ basePath }) {
                       <td className="px-5 py-3">
                         <div className="flex justify-end gap-1">
                           <button onClick={() => handleWhatsApp(o)} title="Send WhatsApp Confirmation"
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-green-600 hover:bg-green-50 transition-colors">
+                            className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors">
                             <MessageCircle size={15} />
                           </button>
                           <button onClick={() => router.push(`${basePath}/orders/${o.id}`)}
-                            title="View" className="p-1.5 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                            title="View" className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors">
                             <Eye size={15} />
                           </button>
                         </div>

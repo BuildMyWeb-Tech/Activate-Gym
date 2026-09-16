@@ -12,8 +12,8 @@ import Link from 'next/link';
 import { ShieldAlertIcon, ArrowRightIcon } from 'lucide-react';
 
 export const metadata = {
-  title: 'GymDesk. - Admin Dashboard',
-  description: 'GymDesk. - Admin Dashboard',
+  title: 'Activate Gym - Admin Dashboard',
+  description: 'Activate Gym - Admin Dashboard',
 };
 
 export default async function RootAdminLayout({ children }) {
@@ -27,8 +27,8 @@ export default async function RootAdminLayout({ children }) {
         <div className="text-center">
           <div className="mb-6">
             <h1 className="text-3xl font-bold text-slate-800">
-              <span className="text-green-600">Gym</span>Desk
-              <span className="text-green-600 text-4xl">.</span>
+              <span className="text-red-600">Activate</span> Gym
+              <span className="text-red-600 text-4xl">.</span>
             </h1>
             <p className="text-slate-500 text-sm mt-1">Admin Dashboard</p>
           </div>

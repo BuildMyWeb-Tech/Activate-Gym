@@ -1,4 +1,4 @@
-// app/(public)/create-store/page.jsx
+﻿// app/(public)/create-store/page.jsx
 'use client';
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -111,7 +111,7 @@ export default function CreateStore() {
           <Dumbbell size={36} className="text-slate-400" />
         </div>
         <h1 className="text-2xl font-semibold text-slate-700 mb-2">Sign in to register a branch</h1>
-        <p className="text-slate-500 mb-8 max-w-sm">You need to be logged in to register your gym branch on GymDesk.</p>
+        <p className="text-slate-500 mb-8 max-w-sm">You need to be logged in to register your gym branch on Activate Gym.</p>
         <Link href="/sign-in" className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-900 text-white px-6 py-3 rounded-lg font-medium transition-colors">
           Sign In <ArrowRight size={16} />
         </Link>
@@ -123,7 +123,7 @@ export default function CreateStore() {
 
   if (alreadySubmitted) {
     const statusConfig = {
-      ACTIVE:   { icon: <CheckCircle size={40} className="text-green-500" />, bg: 'bg-green-50', border: 'border-green-200', color: 'text-green-700' },
+      ACTIVE:   { icon: <CheckCircle size={40} className="text-red-500" />, bg: 'bg-red-50', border: 'border-red-200', color: 'text-red-700' },
       PENDING:  { icon: <Clock size={40} className="text-amber-500" />,       bg: 'bg-amber-50',  border: 'border-amber-200',  color: 'text-amber-700' },
       REJECTED: { icon: <XCircle size={40} className="text-red-500" />,       bg: 'bg-red-50',    border: 'border-red-200',    color: 'text-red-700' },
       INACTIVE: { icon: <Dumbbell size={40} className="text-slate-400" />,    bg: 'bg-slate-50',  border: 'border-slate-200',  color: 'text-slate-600' },
@@ -144,8 +144,8 @@ export default function CreateStore() {
 
           {status === 'ACTIVE' && (
             <div className="mt-5">
-              <div className="w-5 h-5 border-2 border-green-500 border-t-transparent rounded-full animate-spin mx-auto" />
-              <p className="text-xs text-green-600 mt-2">Redirecting to dashboard...</p>
+              <div className="w-5 h-5 border-2 border-red-500 border-t-transparent rounded-full animate-spin mx-auto" />
+              <p className="text-xs text-red-600 mt-2">Redirecting to dashboard...</p>
             </div>
           )}
 
@@ -176,7 +176,7 @@ export default function CreateStore() {
       <form onSubmit={onSubmitHandler} className="max-w-2xl mx-auto">
         <div className="mb-10">
           <h1 className="text-3xl font-bold text-slate-800">
-            Register Your Branch on <span className="text-green-600">GymDesk</span>
+            Register Your Branch on <span className="text-red-600">Activate Gym</span>
           </h1>
           <p className="text-slate-500 mt-2 text-sm max-w-lg">
             Fill in your branch details below. Your application will be reviewed by our admin team within 1-2 business days.
@@ -188,12 +188,12 @@ export default function CreateStore() {
             <label className="block text-sm font-medium text-slate-700 mb-2">
               Branch Logo <span className="text-red-500">*</span>
             </label>
-            <label className="cursor-pointer flex flex-col items-center justify-center border-2 border-dashed border-slate-200 rounded-xl p-6 hover:border-green-400 hover:bg-green-50/30 transition-all">
+            <label className="cursor-pointer flex flex-col items-center justify-center border-2 border-dashed border-slate-200 rounded-xl p-6 hover:border-red-400 hover:bg-red-50/30 transition-all">
               {branchInfo.image ? (
                 <div className="relative">
                   <Image src={URL.createObjectURL(branchInfo.image)} alt="Logo preview" width={80} height={80}
                     className="rounded-xl object-cover w-20 h-20 border border-slate-200 shadow-sm" />
-                  <p className="text-xs text-green-600 mt-2 text-center">Click to change</p>
+                  <p className="text-xs text-red-600 mt-2 text-center">Click to change</p>
                 </div>
               ) : (
                 <>
@@ -215,7 +215,7 @@ export default function CreateStore() {
               <Dumbbell size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               <input name="name" value={branchInfo.name} onChange={onChangeHandler}
                 type="text" placeholder="Iron Temple Fitness" required
-                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400" />
+                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400" />
             </div>
           </div>
 
@@ -228,7 +228,7 @@ export default function CreateStore() {
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">@</span>
               <input name="username" value={branchInfo.username} onChange={onChangeHandler}
                 type="text" placeholder="iron-temple-trichy" required
-                className="w-full pl-8 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400" />
+                className="w-full pl-8 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400" />
             </div>
           </div>
 
@@ -240,7 +240,7 @@ export default function CreateStore() {
               <FileText size={15} className="absolute left-3 top-3 text-slate-400" />
               <textarea name="description" value={branchInfo.description} onChange={onChangeHandler}
                 rows={4} placeholder="Tell us about your gym — facilities, focus, hours..." required
-                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400 resize-none" />
+                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400 resize-none" />
             </div>
           </div>
 
@@ -252,8 +252,8 @@ export default function CreateStore() {
               <div className="relative">
                 <Mail size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input name="email" value={branchInfo.email} onChange={onChangeHandler}
-                  type="email" placeholder="branch@gymdesk.com" required
-                  className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400" />
+                  type="email" placeholder="branch@activategym.com" required
+                  className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400" />
               </div>
             </div>
             <div>
@@ -264,7 +264,7 @@ export default function CreateStore() {
                 <Phone size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input name="phone" value={branchInfo.phone} onChange={onChangeHandler}
                   type="tel" placeholder="+91 98765 43210" required
-                  className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400" />
+                  className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400" />
               </div>
             </div>
           </div>
@@ -277,7 +277,7 @@ export default function CreateStore() {
               <Phone size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               <input name="contact" value={branchInfo.contact} onChange={onChangeHandler}
                 type="tel" placeholder="+91 98765 43210" required
-                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400" />
+                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400" />
             </div>
           </div>
 
@@ -289,13 +289,13 @@ export default function CreateStore() {
               <MapPin size={15} className="absolute left-3 top-3 text-slate-400" />
               <textarea name="address" value={branchInfo.address} onChange={onChangeHandler}
                 rows={3} placeholder="123 Main Street, City, State" required
-                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400 resize-none" />
+                className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400 resize-none" />
             </div>
           </div>
 
           <div className="pt-2">
             <button type="submit" disabled={submitting}
-              className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white py-3 rounded-xl font-medium transition-all disabled:opacity-60 flex items-center justify-center gap-2 shadow-sm">
+              className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white py-3 rounded-xl font-medium transition-all disabled:opacity-60 flex items-center justify-center gap-2 shadow-sm">
               {submitting ? (
                 <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" /> Submitting...</>
               ) : (
@@ -310,7 +310,7 @@ export default function CreateStore() {
 
         <p className="text-center text-sm text-slate-400 mt-6">
           Already have a branch?{' '}
-          <Link href="/store/login" className="text-green-600 hover:underline font-medium">Login to Branch Panel</Link>
+          <Link href="/store/login" className="text-red-600 hover:underline font-medium">Login to Branch Panel</Link>
         </p>
       </form>
     </div>

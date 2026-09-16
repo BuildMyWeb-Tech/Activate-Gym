@@ -20,12 +20,12 @@ const RETURN_STEPS = [
 ];
 
 const STATUS_COLORS = {
-  PENDING:          { active: '#3b82f6', bg: 'bg-blue-100',    text: 'text-blue-700' },
+  PENDING:          { active: '#E60012', bg: 'bg-red-100',    text: 'text-red-700' },
   CONFIRMED:        { active: '#8b5cf6', bg: 'bg-violet-100',  text: 'text-violet-700' },
   PACKED:           { active: '#f59e0b', bg: 'bg-amber-100',   text: 'text-amber-700' },
-  SHIPPED:          { active: '#06b6d4', bg: 'bg-cyan-100',    text: 'text-cyan-700' },
+  SHIPPED:          { active: '#CC0010', bg: 'bg-red-100',    text: 'text-red-700' },
   OUT_FOR_DELIVERY: { active: '#f97316', bg: 'bg-orange-100',  text: 'text-orange-700' },
-  DELIVERED:        { active: '#10b981', bg: 'bg-emerald-100', text: 'text-emerald-700' },
+  DELIVERED:        { active: '#E60012', bg: 'bg-red-100', text: 'text-red-700' },
   CANCELLED:        { active: '#ef4444', bg: 'bg-red-100',     text: 'text-red-700' },
   RETURNED:         { active: '#a855f7', bg: 'bg-purple-100',  text: 'text-purple-700' },
 };

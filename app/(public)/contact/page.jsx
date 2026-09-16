@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -29,7 +29,7 @@ export default function ContactPage() {
                 {/* Header */}
                 <div className="text-center mb-12">
                     <h1 className="text-3xl sm:text-4xl font-semibold text-slate-800">
-                        Contact <span className="text-green-600">Us</span>
+                        Contact <span className="text-red-600">Us</span>
                     </h1>
                     <p className="text-slate-500 mt-3 max-w-lg mx-auto">
                         Have a question or need help? We're here for you. Fill in the form and we'll respond within 24 hours.
@@ -41,8 +41,8 @@ export default function ContactPage() {
                     {/* Contact Info */}
                     <div className="space-y-6">
                         <div className="bg-white rounded-xl border border-slate-100 shadow-sm p-5 flex items-start gap-4">
-                            <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0">
-                                <Mail size={18} className="text-green-600" />
+                            <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
+                                <Mail size={18} className="text-red-600" />
                             </div>
                             <div>
                                 <p className="text-sm font-medium text-slate-700">Email</p>
@@ -51,8 +51,8 @@ export default function ContactPage() {
                         </div>
 
                         <div className="bg-white rounded-xl border border-slate-100 shadow-sm p-5 flex items-start gap-4">
-                            <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
-                                <Phone size={18} className="text-blue-600" />
+                            <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
+                                <Phone size={18} className="text-red-600" />
                             </div>
                             <div>
                                 <p className="text-sm font-medium text-slate-700">Phone</p>
@@ -84,7 +84,7 @@ export default function ContactPage() {
                                         onChange={handleChange}
                                         placeholder="Your name"
                                         required
-                                        className="p-2.5 px-3 border border-slate-200 rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-green-100 text-sm"
+                                        className="p-2.5 px-3 border border-slate-200 rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-red-100 text-sm"
                                     />
                                 </label>
                                 <label className="flex flex-col gap-1.5 flex-1">
@@ -96,7 +96,7 @@ export default function ContactPage() {
                                         onChange={handleChange}
                                         placeholder="your@email.com"
                                         required
-                                        className="p-2.5 px-3 border border-slate-200 rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-green-100 text-sm"
+                                        className="p-2.5 px-3 border border-slate-200 rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-red-100 text-sm"
                                     />
                                 </label>
                             </div>
@@ -110,7 +110,7 @@ export default function ContactPage() {
                                     onChange={handleChange}
                                     placeholder="How can we help?"
                                     required
-                                    className="p-2.5 px-3 border border-slate-200 rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-green-100 text-sm"
+                                    className="p-2.5 px-3 border border-slate-200 rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-red-100 text-sm"
                                 />
                             </label>
 
@@ -123,7 +123,7 @@ export default function ContactPage() {
                                     placeholder="Tell us more..."
                                     rows={5}
                                     required
-                                    className="p-2.5 px-3 border border-slate-200 rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-green-100 text-sm resize-none"
+                                    className="p-2.5 px-3 border border-slate-200 rounded-lg bg-slate-50 outline-none focus:ring-2 focus:ring-red-100 text-sm resize-none"
                                 />
                             </label>
 
@@ -131,7 +131,7 @@ export default function ContactPage() {
                                 <button
                                     type="submit"
                                     disabled={loading}
-                                    className="bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-lg text-sm font-medium flex items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+                                    className="bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 rounded-lg text-sm font-medium flex items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
                                 >
                                     {loading ? (
                                         <><Loader2 size={16} className="animate-spin" /> Sending...</>

@@ -1,4 +1,4 @@
-// components/store/StoreLayout.jsx
+﻿// components/store/StoreLayout.jsx
 'use client';
 import { useEffect, useState } from 'react';
 import Loading from '../Loading';
@@ -156,7 +156,7 @@ const StoreLayout = ({ children }) => {
         <div className="flex flex-col gap-3">
           <Link
             href="/create-store"
-            className="bg-gradient-to-r from-green-600 to-green-700 text-white flex items-center justify-center gap-2 py-3 px-6 rounded-lg text-sm font-medium shadow-md hover:from-green-700 hover:to-green-800 transition"
+            className="bg-gradient-to-r from-red-600 to-red-700 text-white flex items-center justify-center gap-2 py-3 px-6 rounded-lg text-sm font-medium shadow-md hover:from-red-700 hover:to-red-800 transition"
           >
             <LogIn size={16} /> Branch / Receptionist Login
           </Link>

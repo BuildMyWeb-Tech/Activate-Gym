@@ -1,4 +1,4 @@
-// components/attendance/AttendanceLog.jsx
+﻿// components/attendance/AttendanceLog.jsx
 'use client';
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { useAuth } from '@clerk/nextjs';
@@ -105,6 +105,8 @@ export default function AttendanceLog() {
       const headers = await getBranchAuthHeader(getToken);
       const { data } = await axios.post('/api/attendance/manual', { memberId }, { headers });
       toast.success(data.message);
+      setMemberSearch('');
+      setMemberResults([]);
       await fetchRecords();
     } catch (error) {
       toast.error(error?.response?.data?.error || error.message);
@@ -155,14 +157,14 @@ export default function AttendanceLog() {
     <div className="px-3 sm:px-6 py-4 sm:py-6 pb-28">
       <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <h1 className="text-2xl md:text-3xl font-bold text-slate-800 flex items-center gap-2">
-          <CalendarCheck size={24} className="text-green-600" /> Attendance
+          <CalendarCheck size={24} className="text-red-600" /> Attendance
         </h1>
         <div className="flex items-center gap-2">
           <input
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-green-100"
+            className="border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-red-100"
           />
           {/* <button
             onClick={fetchRecords}
@@ -175,22 +177,22 @@ export default function AttendanceLog() {
 
       {/* Stat widgets */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-        <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
-            <Users size={17} className="text-blue-600" />
+        <div className="bg-red-50 border border-red-100 rounded-xl p-4 flex items-center gap-3">
+          <div className="w-9 h-9 rounded-lg bg-red-100 flex items-center justify-center flex-shrink-0">
+            <Users size={17} className="text-red-600" />
           </div>
           <div>
             <p className="text-xs text-slate-500 font-medium">Total Visits</p>
-            <p className="text-xl font-bold text-blue-700">{totalVisits}</p>
+            <p className="text-xl font-bold text-red-700">{totalVisits}</p>
           </div>
         </div>
-        <div className="bg-green-50 border border-green-100 rounded-xl p-4 flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
-            <LogIn size={17} className="text-green-600" />
+        <div className="bg-red-50 border border-red-100 rounded-xl p-4 flex items-center gap-3">
+          <div className="w-9 h-9 rounded-lg bg-red-100 flex items-center justify-center flex-shrink-0">
+            <LogIn size={17} className="text-red-600" />
           </div>
           <div>
             <p className="text-xs text-slate-500 font-medium">Gym In</p>
-            <p className="text-xl font-bold text-green-700">{gymIn}</p>
+            <p className="text-xl font-bold text-red-700">{gymIn}</p>
           </div>
         </div>
         <div className="bg-amber-50 border border-amber-100 rounded-xl p-4 flex items-center gap-3">
@@ -217,7 +219,7 @@ export default function AttendanceLog() {
       {isToday && (
         <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-5 mb-6">
           <h3 className="font-semibold text-slate-800 mb-3 text-sm flex items-center gap-2">
-            <UserCheck size={16} className="text-green-600" /> Check-in / Check-out
+            <UserCheck size={16} className="text-red-600" /> Check-in / Check-out
           </h3>
           <div className="relative">
             <Search
@@ -228,7 +230,7 @@ export default function AttendanceLog() {
               value={memberSearch}
               onChange={(e) => setMemberSearch(e.target.value)}
               placeholder="Search member by name or phone..."
-              className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100"
+              className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100"
             />
             {memberResults.length > 0 && (
               <div className="absolute left-0 right-0 top-full mt-2 z-20 bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden divide-y divide-slate-100 max-h-72 overflow-y-auto">
@@ -247,7 +249,7 @@ export default function AttendanceLog() {
                             className="w-7.5 h-7.5 rounded-full object-cover border border-slate-200 flex-shrink-0"
                           />
                         ) : (
-                          <div className="w-7.5 h-7.5 rounded-full bg-green-100 flex items-center justify-center text-green-700 text-xs font-semibold flex-shrink-0">
+                          <div className="w-7.5 h-7.5 rounded-full bg-red-100 flex items-center justify-center text-red-700 text-xs font-semibold flex-shrink-0">
                             {m.fullName.charAt(0).toUpperCase()}
                           </div>
                         )}
@@ -264,7 +266,7 @@ export default function AttendanceLog() {
                         className={`flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors disabled:opacity-60 flex-shrink-0 ${
                           isIn
                             ? 'bg-amber-50 text-amber-700 hover:bg-amber-100'
-                            : 'bg-green-50 text-green-700 hover:bg-green-100'
+                            : 'bg-red-50 text-red-700 hover:bg-red-100'
                         }`}
                       >
                         {isLoading ? (
@@ -294,9 +296,9 @@ export default function AttendanceLog() {
         <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden mb-6">
           <div className="p-4 border-b border-slate-100 flex items-center justify-between">
             <h3 className="font-semibold text-slate-800 text-sm flex items-center gap-2">
-              <DoorOpen size={16} className="text-green-600" /> Currently Inside
+              <DoorOpen size={16} className="text-red-600" /> Currently Inside
             </h3>
-            <span className="text-xs bg-green-50 text-green-700 px-2.5 py-1 rounded-full font-medium">
+            <span className="text-xs bg-red-50 text-red-700 px-2.5 py-1 rounded-full font-medium">
               {insideNow.length} in gym
             </span>
           </div>
@@ -318,7 +320,7 @@ export default function AttendanceLog() {
                         className="w-8 h-8 rounded-full object-cover border border-slate-200 flex-shrink-0"
                       />
                     ) : (
-                      <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-700 text-xs font-semibold flex-shrink-0">
+                      <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-700 text-xs font-semibold flex-shrink-0">
                         {r.member.fullName.charAt(0).toUpperCase()}
                       </div>
                     )}
@@ -389,7 +391,7 @@ export default function AttendanceLog() {
                             className="w-8 h-8 rounded-full object-cover border border-slate-200"
                           />
                         ) : (
-                          <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-700 text-xs font-semibold">
+                          <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center text-red-700 text-xs font-semibold">
                             {r.member.fullName.charAt(0).toUpperCase()}
                           </div>
                         )}
@@ -417,7 +419,7 @@ export default function AttendanceLog() {
                     <td className="px-5 py-3 text-xs text-slate-500">{r.method}</td>
                     <td className="px-5 py-3">
                       {r.verified ? (
-                        <span className="inline-flex items-center gap-1 text-xs text-green-700 bg-green-50 px-2 py-0.5 rounded-full">
+                        <span className="inline-flex items-center gap-1 text-xs text-red-700 bg-red-50 px-2 py-0.5 rounded-full">
                           <ShieldCheck size={12} /> Verified
                         </span>
                       ) : (
@@ -431,7 +433,7 @@ export default function AttendanceLog() {
                         <button
                           onClick={() => openCorrection(r)}
                           title="Correct"
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-colors"
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors"
                         >
                           <Pencil size={14} />
                         </button>
@@ -474,7 +476,7 @@ export default function AttendanceLog() {
                   onChange={(e) =>
                     setCorrectionForm({ ...correctionForm, checkIn: e.target.value })
                   }
-                  className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100"
+                  className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100"
                   required
                 />
               </div>
@@ -488,7 +490,7 @@ export default function AttendanceLog() {
                   onChange={(e) =>
                     setCorrectionForm({ ...correctionForm, checkOut: e.target.value })
                   }
-                  className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100"
+                  className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100"
                 />
               </div>
               <div>
@@ -503,12 +505,12 @@ export default function AttendanceLog() {
                     setCorrectionForm({ ...correctionForm, correctionReason: e.target.value })
                   }
                   placeholder="e.g. Device missed the scan"
-                  className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 resize-none"
+                  className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 resize-none"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full bg-green-600 hover:bg-green-700 text-white py-2.5 rounded-lg text-sm font-medium"
+                className="w-full bg-red-600 hover:bg-red-700 text-white py-2.5 rounded-lg text-sm font-medium"
               >
                 Save Correction
               </button>

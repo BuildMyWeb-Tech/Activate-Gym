@@ -28,9 +28,9 @@ export default function EmployeeNavbar({ branchInfo, employee, mobileOpen, setMo
           href="/employee/dashboard"
           className="relative text-2xl font-semibold text-slate-700 flex items-center gap-2"
         >
-          <Dumbbell className="text-blue-600" size={22} />
-          GymDesk
-          <div className="absolute text-xs font-semibold -top-1.5 -right-16 px-2 py-0.5 rounded-full text-white bg-gradient-to-r from-blue-500 to-blue-600 shadow-sm whitespace-nowrap">
+          <Dumbbell className="text-red-600" size={22} />
+          Activate Gym
+          <div className="absolute text-xs font-semibold -top-1.5 -right-16 px-2 py-0.5 rounded-full text-white bg-gradient-to-r from-red-600 to-red-700 shadow-sm whitespace-nowrap">
             Receptionist
           </div>
         </Link>
@@ -42,7 +42,7 @@ export default function EmployeeNavbar({ branchInfo, employee, mobileOpen, setMo
           <p className="text-xs text-slate-500">Receptionist • {branchInfo?.name}</p>
         </div>
 
-        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-sm shadow-sm">
+        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center text-white font-bold text-sm shadow-sm">
           {avatarLetter}
         </div>
 

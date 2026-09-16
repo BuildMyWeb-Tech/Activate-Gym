@@ -1,4 +1,4 @@
-// components/checkout/Checkout.jsx
+﻿// components/checkout/Checkout.jsx
 'use client';
 import { useEffect, useState } from 'react';
 import { useAuth } from '@clerk/nextjs';
@@ -153,7 +153,7 @@ export default function Checkout({ basePath }) {
   return (
     <div className="px-3 sm:px-6 py-4 sm:py-6 pb-28">
       <h1 className="text-2xl md:text-3xl font-bold text-slate-800 mb-6 flex items-center gap-2">
-        <ShoppingCart size={24} className="text-green-600" /> Checkout
+        <ShoppingCart size={24} className="text-red-600" /> Checkout
       </h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -163,16 +163,16 @@ export default function Checkout({ basePath }) {
             <h3 className="font-semibold text-slate-800 mb-3">1. Select Member</h3>
             {selectedMember ? (
               <div>
-                <div className="flex items-center justify-between bg-green-50 border border-green-200 rounded-lg px-4 py-3">
+                <div className="flex items-center justify-between bg-red-50 border border-red-200 rounded-lg px-4 py-3">
                   <div>
                     <p className="font-medium text-slate-800 text-sm">{selectedMember.fullName}</p>
                     <p className="text-xs text-slate-500">{selectedMember.phone}</p>
                   </div>
-                  <button onClick={() => { setSelectedMember(null); setActiveMembership(null); }} className="text-xs text-green-700 hover:underline">Change</button>
+                  <button onClick={() => { setSelectedMember(null); setActiveMembership(null); }} className="text-xs text-red-700 hover:underline">Change</button>
                 </div>
                 {activeMembership ? (
                   <div className="mt-2 flex items-center gap-2 text-xs text-slate-500 px-1">
-                    <Info size={12} className={activeMembership.daysRemaining <= 7 ? 'text-amber-500' : 'text-green-500'} />
+                    <Info size={12} className={activeMembership.daysRemaining <= 7 ? 'text-amber-500' : 'text-red-500'} />
                     <span>Active: <strong>{activeMembership.planName}</strong> — {activeMembership.daysRemaining} day{activeMembership.daysRemaining !== 1 ? 's' : ''} remaining (expires {formatDate(activeMembership.expiryDate)})</span>
                   </div>
                 ) : (
@@ -187,7 +187,7 @@ export default function Checkout({ basePath }) {
                 <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 z-10" />
                 <input value={memberSearch} onChange={(e) => setMemberSearch(e.target.value)}
                   placeholder="Search member by name or phone..."
-                  className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400" />
+                  className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400" />
                 {members.length > 0 && (
                   <div className="absolute left-0 right-0 top-full mt-2 z-20 bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden divide-y divide-slate-100 max-h-64 overflow-y-auto">
                     {members.map((m) => (
@@ -216,8 +216,8 @@ export default function Checkout({ basePath }) {
                     <button key={p.id} onClick={() => togglePlan(p)}
                       className={`text-sm rounded-lg px-3.5 py-2.5 flex items-center gap-2 border transition-colors ${
                         selected
-                          ? 'bg-green-600 border-green-600 text-white'
-                          : 'border-slate-200 text-slate-700 hover:border-green-400 hover:bg-green-50'
+                          ? 'bg-red-600 border-green-600 text-white'
+                          : 'border-slate-200 text-slate-700 hover:border-red-400 hover:bg-red-50'
                       }`}>
                       {selected ? <Check size={14} /> : <Plus size={14} />}
                       {p.name} — ₹{p.price.toLocaleString('en-IN')}
@@ -249,8 +249,8 @@ export default function Checkout({ basePath }) {
           )}
 
           {renewalPreview && renewalPreview.length > 0 && (
-            <div className="mb-4 bg-blue-50 border border-blue-100 rounded-lg p-3 space-y-1.5">
-              <p className="text-xs font-semibold text-blue-700 flex items-center gap-1.5">
+            <div className="mb-4 bg-red-50 border border-red-100 rounded-lg p-3 space-y-1.5">
+              <p className="text-xs font-semibold text-red-700 flex items-center gap-1.5">
                 <Calendar size={12} /> Renewal Preview
               </p>
               {renewalPreview.map((p, i) => (
@@ -272,7 +272,7 @@ export default function Checkout({ basePath }) {
             <div className="grid grid-cols-2 gap-2">
               {['CASH', 'UPI'].map((m) => (
                 <button key={m} onClick={() => setPaymentMethod(m)}
-                  className={`text-sm py-2.5 rounded-lg border font-medium ${paymentMethod === m ? 'bg-green-600 text-white border-green-600' : 'border-slate-200 text-slate-600 hover:bg-slate-50'}`}>
+                  className={`text-sm py-2.5 rounded-lg border font-medium ${paymentMethod === m ? 'bg-red-600 text-white border-green-600' : 'border-slate-200 text-slate-600 hover:bg-slate-50'}`}>
                   {m}
                 </button>
               ))}
@@ -280,7 +280,7 @@ export default function Checkout({ basePath }) {
           </div>
 
           <button onClick={handleCheckout} disabled={submitting}
-            className="w-full mt-5 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white py-3 rounded-xl font-medium disabled:opacity-60 flex items-center justify-center gap-2">
+            className="w-full mt-5 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white py-3 rounded-xl font-medium disabled:opacity-60 flex items-center justify-center gap-2">
             {submitting ? <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" /> : <CreditCard size={16} />}
             {submitting ? 'Processing...' : `Complete Payment — ₹${total.toLocaleString('en-IN')}`}
           </button>

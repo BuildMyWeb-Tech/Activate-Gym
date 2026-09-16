@@ -1,4 +1,4 @@
-// components/OrderTimeline.jsx
+﻿// components/OrderTimeline.jsx
 'use client';
 import {
   ClipboardList, CheckCircle2, Package, Truck, Navigation,
@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 
 const STATUS_CONFIG = {
-  PENDING:          { label: 'Order Placed',     Icon: ClipboardList,  color: 'bg-blue-100 text-blue-600',    dot: 'bg-blue-500' },
+  PENDING:          { label: 'Order Placed',     Icon: ClipboardList,  color: 'bg-red-100 text-red-600',    dot: 'bg-red-500' },
   CONFIRMED:        { label: 'Order Confirmed',  Icon: CheckCircle2,   color: 'bg-violet-100 text-violet-600', dot: 'bg-violet-500' },
   PACKED:           { label: 'Packed',           Icon: Package,        color: 'bg-amber-100 text-amber-600',   dot: 'bg-amber-500' },
   SHIPPED:          { label: 'Shipped',          Icon: Truck,          color: 'bg-cyan-100 text-cyan-600',     dot: 'bg-cyan-500' },
@@ -18,7 +18,7 @@ const STATUS_CONFIG = {
 
 const ACTOR_CONFIG = {
   ADMIN:  { label: 'Admin',  Icon: ShieldCheck, color: 'text-violet-600 bg-violet-50' },
-  STORE:  { label: 'Store',  Icon: User,        color: 'text-blue-600 bg-blue-50' },
+  STORE:  { label: 'Store',  Icon: User,        color: 'text-red-600 bg-red-50' },
   SYSTEM: { label: 'System', Icon: Cpu,         color: 'text-slate-500 bg-slate-100' },
 };
 

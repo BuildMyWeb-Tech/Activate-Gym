@@ -1,4 +1,4 @@
-// components/orders/OrderDetail.jsx
+﻿// components/orders/OrderDetail.jsx
 'use client';
 import { useEffect, useState } from 'react';
 import { useAuth } from '@clerk/nextjs';
@@ -71,12 +71,12 @@ export default function OrderDetail({ basePath, orderId }) {
             <div className="flex items-center gap-2">
               <button
                 onClick={handleWhatsApp}
-                className="text-xs font-medium bg-green-500/20 hover:bg-green-500/30 text-green-300 px-3 py-1.5 rounded-lg flex items-center gap-1.5"
+                className="text-xs font-medium bg-red-500/20 hover:bg-red-500/30 text-red-300 px-3 py-1.5 rounded-lg flex items-center gap-1.5"
               >
                 <MessageCircle size={13} /> WhatsApp
               </button>
               <span
-                className={`text-xs font-medium px-3 py-1.5 rounded-full flex items-center gap-1.5 ${order.isPaid ? 'bg-green-500/20 text-green-300' : 'bg-amber-500/20 text-amber-300'}`}
+                className={`text-xs font-medium px-3 py-1.5 rounded-full flex items-center gap-1.5 ${order.isPaid ? 'bg-red-500/20 text-red-300' : 'bg-amber-500/20 text-amber-300'}`}
               >
                 <CheckCircle2 size={12} /> {order.isPaid ? 'Paid' : 'Awaiting Payment'}
               </span>
@@ -90,8 +90,8 @@ export default function OrderDetail({ basePath, orderId }) {
             {order.orderItems.map((item) => (
               <div key={item.id} className="flex justify-between py-3.5 text-sm">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center flex-shrink-0">
-                    <Dumbbell size={14} className="text-green-600" />
+                  <div className="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center flex-shrink-0">
+                    <Dumbbell size={14} className="text-red-600" />
                   </div>
                   <div>
                     <p className="text-slate-800 font-medium">{item.name}</p>
@@ -113,7 +113,7 @@ export default function OrderDetail({ basePath, orderId }) {
               <span>₹{order.subtotal.toLocaleString('en-IN')}</span>
             </div>
             {order.couponDiscount > 0 && (
-              <div className="flex justify-between text-green-600">
+              <div className="flex justify-between text-red-600">
                 <span>Coupon ({order.couponCode})</span>
                 <span>-₹{order.couponDiscount.toLocaleString('en-IN')}</span>
               </div>
@@ -136,7 +136,7 @@ export default function OrderDetail({ basePath, orderId }) {
             <div className="space-y-3">
               {order.timeline.map((t) => (
                 <div key={t.id} className="flex gap-3 text-sm">
-                  <div className="w-2 h-2 rounded-full bg-green-500 mt-1.5 flex-shrink-0" />
+                  <div className="w-2 h-2 rounded-full bg-red-500 mt-1.5 flex-shrink-0" />
                   <div className="flex-1 flex justify-between">
                     <span className="text-slate-700">
                       {t.status}

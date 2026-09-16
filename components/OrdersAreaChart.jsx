@@ -1,4 +1,4 @@
-// C:\Users\Siddharathan\Desktop\gocart-ecommerce-full-stack\components\OrdersAreaChart.jsx
+﻿// C:\Users\Siddharathan\Desktop\gocart-ecommerce-full-stack\components\OrdersAreaChart.jsx
 'use client';
 import { useState } from 'react';
 import {
@@ -73,7 +73,7 @@ export default function OrdersAreaChart({ allOrders }) {
             key={key}
             onClick={() => setRange(key)}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-              range === key ? 'bg-green-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              range === key ? 'bg-red-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
             }`}
           >
             {label}
@@ -91,8 +91,8 @@ export default function OrdersAreaChart({ allOrders }) {
             <AreaChart data={fullRange} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
               <defs>
                 <linearGradient id="ordersGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%"  stopColor="#22c55e" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#22c55e" stopOpacity={0} />
+                  <stop offset="5%"  stopColor="#E60012" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="#E60012" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
@@ -104,9 +104,9 @@ export default function OrdersAreaChart({ allOrders }) {
               />
               <Area
                 type="monotone" dataKey="orders"
-                stroke="#22c55e" strokeWidth={2.5}
+                stroke="#E60012" strokeWidth={2.5}
                 fill="url(#ordersGrad)"
-                dot={false} activeDot={{ r: 4, fill: '#22c55e' }}
+                dot={false} activeDot={{ r: 4, fill: '#E60012' }}
               />
             </AreaChart>
           </ResponsiveContainer>

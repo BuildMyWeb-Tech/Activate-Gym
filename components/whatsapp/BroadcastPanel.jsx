@@ -1,4 +1,4 @@
-// components/whatsapp/BroadcastPanel.jsx
+﻿// components/whatsapp/BroadcastPanel.jsx
 'use client';
 import { useEffect, useState, useCallback } from 'react';
 import { useAuth } from '@clerk/nextjs';
@@ -28,7 +28,7 @@ function MemberRow({ member, selected, onToggle }) {
         <p className="text-xs text-slate-500">{member.phone}</p>
       </div>
       {member.status === 'ACTIVE' && (
-        <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full flex-shrink-0">Active</span>
+        <span className="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded-full flex-shrink-0">Active</span>
       )}
     </label>
   );
@@ -38,18 +38,18 @@ function ResultRow({ r }) {
   if (r.status === 'sent') {
     return (
       <div className="flex items-center gap-2 text-sm">
-        <CheckCircle2 size={14} className="text-green-600 flex-shrink-0" />
+        <CheckCircle2 size={14} className="text-red-600 flex-shrink-0" />
         <span className="truncate text-slate-700">{r.fullName}</span>
-        <span className="text-xs text-green-600 flex-shrink-0">Sent</span>
+        <span className="text-xs text-red-600 flex-shrink-0">Sent</span>
       </div>
     );
   }
   if (r.status === 'link') {
     return (
       <div className="flex items-center gap-2 text-sm">
-        <ExternalLink size={14} className="text-blue-500 flex-shrink-0" />
+        <ExternalLink size={14} className="text-red-500 flex-shrink-0" />
         <span className="truncate text-slate-700">{r.fullName}</span>
-        <a href={r.fallbackUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 underline flex-shrink-0">Open WA</a>
+        <a href={r.fallbackUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-red-600 underline flex-shrink-0">Open WA</a>
       </div>
     );
   }
@@ -153,7 +153,7 @@ export default function BroadcastPanel() {
   return (
     <div className="px-3 sm:px-6 py-4 sm:py-6 pb-28">
       <h1 className="text-2xl font-bold text-slate-800 flex items-center gap-2 mb-6">
-        <MessageSquare size={22} className="text-green-600" /> Broadcast Message
+        <MessageSquare size={22} className="text-red-600" /> Broadcast Message
       </h1>
 
       {results ? (
@@ -168,7 +168,7 @@ export default function BroadcastPanel() {
             <div className="grid grid-cols-3 gap-4 mb-5">
               {[
                 { label: 'Total', value: results.total, color: 'text-slate-700' },
-                { label: 'Sent', value: results.sent, color: 'text-green-600' },
+                { label: 'Sent', value: results.sent, color: 'text-red-600' },
                 { label: 'Failed', value: results.failed, color: 'text-red-500' },
               ].map(({ label, value, color }) => (
                 <div key={label} className="bg-slate-50 rounded-lg p-3 text-center">
@@ -202,7 +202,7 @@ export default function BroadcastPanel() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search members…"
-                  className="w-full pl-8 pr-3 py-2 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400"
+                  className="w-full pl-8 pr-3 py-2 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400"
                 />
               </div>
             </div>
@@ -255,7 +255,7 @@ export default function BroadcastPanel() {
               onChange={(e) => setMessage(e.target.value.slice(0, MSG_MAX))}
               placeholder="Type your message here…"
               rows={8}
-              className="w-full border border-slate-200 rounded-lg p-3 text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400 resize-none"
+              className="w-full border border-slate-200 rounded-lg p-3 text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400 resize-none"
             />
             <div className="flex items-center justify-between mt-1 mb-4">
               <span className="text-xs text-slate-400">{message.length} / {MSG_MAX}</span>
@@ -270,7 +270,7 @@ export default function BroadcastPanel() {
             <button
               onClick={send}
               disabled={sending || selected.size === 0 || !message.trim()}
-              className="w-full flex items-center justify-center gap-2 py-3 bg-green-600 text-white rounded-xl font-medium hover:bg-green-700 disabled:opacity-50 transition-colors"
+              className="w-full flex items-center justify-center gap-2 py-3 bg-red-600 text-white rounded-xl font-medium hover:bg-red-700 disabled:opacity-50 transition-colors"
             >
               {sending ? (
                 <>

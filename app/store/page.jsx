@@ -1,4 +1,4 @@
-// app/store/page.jsx
+﻿// app/store/page.jsx
 'use client';
 import Loading from '@/components/Loading';
 import { useAuth } from '@clerk/nextjs';
@@ -21,16 +21,16 @@ import toast from 'react-hot-toast';
 function StatCard({ title, value, icon: Icon, color, sub }) {
   const colorMap = {
     green: {
-      bg: 'bg-green-50',
-      icon: 'bg-green-100 text-green-600',
-      border: 'border-green-100',
-      val: 'text-green-700',
+      bg: 'bg-red-50',
+      icon: 'bg-red-100 text-red-600',
+      border: 'border-red-100',
+      val: 'text-red-700',
     },
     blue: {
-      bg: 'bg-blue-50',
-      icon: 'bg-blue-100 text-blue-600',
-      border: 'border-blue-100',
-      val: 'text-blue-700',
+      bg: 'bg-red-50',
+      icon: 'bg-red-100 text-red-600',
+      border: 'border-red-100',
+      val: 'text-red-700',
     },
     amber: {
       bg: 'bg-amber-50',
@@ -114,7 +114,7 @@ export default function StoreDashboard() {
             Status:{' '}
             <span
               className={
-                dash.branch?.isActive ? 'text-green-600 font-medium' : 'text-red-500 font-medium'
+                dash.branch?.isActive ? 'text-red-600 font-medium' : 'text-red-500 font-medium'
               }
             >
               {dash.branch?.status}

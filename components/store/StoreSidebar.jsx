@@ -1,4 +1,4 @@
-// components/store/StoreSidebar.jsx
+﻿// components/store/StoreSidebar.jsx
 'use client';
 import { usePathname, useRouter } from 'next/navigation';
 import {
@@ -142,11 +142,11 @@ const StoreSidebar = ({ branchInfo, closeMobileMenu, employee }) => {
               height={48}
             />
           ) : (
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center text-white font-bold text-lg shadow-md">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-white font-bold text-lg shadow-md">
               {branchInfo?.name?.charAt(0)?.toUpperCase() || 'B'}
             </div>
           )}
-          <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white" />
+          <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white" />
         </div>
 
         {!collapsed && (
@@ -154,13 +154,13 @@ const StoreSidebar = ({ branchInfo, closeMobileMenu, employee }) => {
             <p className="text-slate-800 font-medium truncate text-sm">{branchInfo?.name}</p>
             {employee ? (
               <div className="flex flex-col gap-0.5 mt-0.5">
-                <span className="text-xs px-1.5 py-0.5 rounded-full w-fit font-medium bg-blue-100 text-blue-700">
+                <span className="text-xs px-1.5 py-0.5 rounded-full w-fit font-medium bg-red-100 text-red-700">
                   Receptionist
                 </span>
                 <span className="text-xs text-slate-400 truncate">{employee.name}</span>
               </div>
             ) : (
-              <span className="bg-green-100 text-green-800 text-xs px-1.5 py-0.5 rounded-full">
+              <span className="bg-red-100 text-red-800 text-xs px-1.5 py-0.5 rounded-full">
                 Branch Owner
               </span>
             )}
@@ -186,10 +186,10 @@ const StoreSidebar = ({ branchInfo, closeMobileMenu, employee }) => {
               onClick={handleLinkClick}
               className={`relative flex items-center gap-3 p-2.5 transition-all hover:bg-slate-50 ${collapsed ? 'justify-center' : 'pl-6 pr-3'} ${isActive ? 'bg-gradient-to-r from-slate-50 to-slate-100 font-medium text-slate-800' : 'text-slate-500 hover:text-slate-600'}`}
             >
-              <link.icon size={18} className={isActive ? 'text-green-500' : ''} />
+              <link.icon size={18} className={isActive ? 'text-red-500' : ''} />
               {!collapsed && <p className="truncate text-sm">{link.name}</p>}
               {isActive && (
-                <span className="absolute bg-gradient-to-b from-green-400 to-green-600 right-0 top-0 bottom-0 w-1.5 rounded-l" />
+                <span className="absolute bg-gradient-to-b from-red-500 to-red-700 right-0 top-0 bottom-0 w-1.5 rounded-l" />
               )}
             </Link>
           );

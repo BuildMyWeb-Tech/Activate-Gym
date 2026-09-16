@@ -43,21 +43,21 @@ export default function EmployeeLoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50/20 to-slate-100 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-red-50/20 to-slate-100 px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <Link
             href="/"
             className="inline-flex items-center justify-center gap-2 text-4xl font-bold text-slate-800"
           >
-            <span className="text-blue-600">Gym</span>Desk
+            <span className="text-red-600">Activate</span> Gym
           </Link>
         </div>
 
         <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8">
           <div className="text-center mb-6">
-            <div className="inline-flex items-center justify-center w-14 h-14 bg-blue-100 rounded-2xl mb-3">
-              <Users size={26} className="text-blue-600" />
+            <div className="inline-flex items-center justify-center w-14 h-14 bg-red-100 rounded-2xl mb-3">
+              <Users size={26} className="text-red-600" />
             </div>
             <h1 className="text-xl font-bold text-slate-800">Receptionist Login</h1>
             
@@ -78,7 +78,7 @@ export default function EmployeeLoginPage() {
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   placeholder="you@branch.com"
-                  className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition"
+                  className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400 transition"
                 />
               </div>
             </div>
@@ -95,7 +95,7 @@ export default function EmployeeLoginPage() {
                   value={form.password}
                   onChange={(e) => setForm({ ...form, password: e.target.value })}
                   placeholder="••••••••"
-                  className="w-full pl-9 pr-10 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition"
+                  className="w-full pl-9 pr-10 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400 transition"
                 />
                 <button
                   type="button"
@@ -110,7 +110,7 @@ export default function EmployeeLoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-2.5 rounded-lg font-medium text-sm transition-all disabled:opacity-60 flex items-center justify-center gap-2 mt-2"
+              className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white py-2.5 rounded-lg font-medium text-sm transition-all disabled:opacity-60 flex items-center justify-center gap-2 mt-2"
             >
               {loading ? (
                 <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
@@ -121,7 +121,7 @@ export default function EmployeeLoginPage() {
             </button>
           </form>
 
-          <div className="mt-5 p-3 bg-blue-50 rounded-xl border border-blue-100 text-xs text-blue-600 text-center">
+          <div className="mt-5 p-3 bg-red-50 rounded-xl border border-red-100 text-xs text-red-600 text-center">
             Use the email and password given by your branch owner
           </div>
         </div>

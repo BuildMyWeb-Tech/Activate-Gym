@@ -59,15 +59,15 @@ export default function StoreLoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-green-50/30 to-slate-100 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-red-50/30 to-slate-100 px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <Link
             href="/"
             className="inline-flex items-center justify-center gap-2 text-4xl font-bold text-slate-800"
           >
-            <Dumbbell className="text-green-600" size={34} />
-            GymDesk
+            <Dumbbell className="text-red-600" size={34} />
+            Activate Gym
           </Link>
           <p className="text-slate-500 text-sm mt-2">Branch Management Portal</p>
         </div>
@@ -77,14 +77,14 @@ export default function StoreLoginPage() {
             <button
               type="button"
               onClick={() => setLoginType('owner')}
-              className={`flex-1 py-2.5 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${loginType === 'owner' ? 'bg-green-600 text-white' : 'bg-white text-slate-600 hover:bg-slate-50'}`}
+              className={`flex-1 py-2.5 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${loginType === 'owner' ? 'bg-red-600 text-white' : 'bg-white text-slate-600 hover:bg-slate-50'}`}
             >
               <Dumbbell size={15} /> Branch Owner
             </button>
             <button
               type="button"
               onClick={() => setLoginType('employee')}
-              className={`flex-1 py-2.5 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${loginType === 'employee' ? 'bg-blue-600 text-white' : 'bg-white text-slate-600 hover:bg-slate-50'}`}
+              className={`flex-1 py-2.5 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${loginType === 'employee' ? 'bg-red-600 text-white' : 'bg-white text-slate-600 hover:bg-slate-50'}`}
             >
               <Users size={15} /> Receptionist
             </button>
@@ -92,22 +92,22 @@ export default function StoreLoginPage() {
 
           {loginType === 'owner' ? (
             <div className="text-center py-4">
-              <div className="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                <Dumbbell size={26} className="text-green-600" />
+              <div className="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                <Dumbbell size={26} className="text-red-600" />
               </div>
               <h2 className="font-bold text-slate-800 mb-1">Branch Owner Login</h2>
               <p className="text-sm text-slate-500 mb-5">
-                Sign in with your GymDesk account to access the branch panel.
+                Sign in with your Activate Gym account to access the branch panel.
               </p>
               <Link
                 href="/sign-in?redirect_url=/store"
-                className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white py-2.5 rounded-lg font-medium text-sm transition-all"
+                className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white py-2.5 rounded-lg font-medium text-sm transition-all"
               >
-                <LogIn size={16} /> Sign in with GymDesk
+                <LogIn size={16} /> Sign in with Activate Gym
               </Link>
               <p className="text-xs text-slate-400 mt-4">
                 Don't have a branch?{' '}
-                <Link href="/create-store" className="text-green-600 hover:underline font-medium">
+                <Link href="/create-store" className="text-red-600 hover:underline font-medium">
                   Register here
                 </Link>
               </p>
@@ -115,8 +115,8 @@ export default function StoreLoginPage() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="text-center mb-4">
-                <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-2">
-                  <Users size={26} className="text-blue-600" />
+                <div className="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-2">
+                  <Users size={26} className="text-red-600" />
                 </div>
                 <h2 className="font-bold text-slate-800">Receptionist Login</h2>
                 <p className="text-xs text-slate-400 mt-1">
@@ -138,7 +138,7 @@ export default function StoreLoginPage() {
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     placeholder="you@branch.com"
-                    className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition"
+                    className="w-full pl-9 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400 transition"
                   />
                 </div>
               </div>
@@ -155,7 +155,7 @@ export default function StoreLoginPage() {
                     value={form.password}
                     onChange={(e) => setForm({ ...form, password: e.target.value })}
                     placeholder="••••••••"
-                    className="w-full pl-9 pr-10 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition"
+                    className="w-full pl-9 pr-10 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400 transition"
                   />
                   <button
                     type="button"
@@ -170,7 +170,7 @@ export default function StoreLoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-2.5 rounded-lg font-medium text-sm transition-all disabled:opacity-60 flex items-center justify-center gap-2 mt-2"
+                className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white py-2.5 rounded-lg font-medium text-sm transition-all disabled:opacity-60 flex items-center justify-center gap-2 mt-2"
               >
                 {loading ? (
                   <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
@@ -191,7 +191,7 @@ export default function StoreLoginPage() {
             <ArrowLeft size={12} /> Back to Homepage
           </Link>
           <span className="text-slate-300">•</span>
-          <Link href="/create-store" className="text-xs text-green-600 hover:underline">
+          <Link href="/create-store" className="text-xs text-red-600 hover:underline">
             Register a Branch
           </Link>
         </div>

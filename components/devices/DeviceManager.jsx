@@ -1,4 +1,4 @@
-// components/devices/DeviceManager.jsx
+﻿// components/devices/DeviceManager.jsx
 'use client';
 import { useEffect, useState } from 'react';
 import { useAuth } from '@clerk/nextjs';
@@ -83,11 +83,11 @@ export default function DeviceManager() {
     <div className="px-3 sm:px-6 py-4 sm:py-6 pb-28">
       <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <h1 className="text-2xl md:text-3xl font-bold text-slate-800 flex items-center gap-2">
-          <Fingerprint size={24} className="text-green-600" /> Biometric Devices
+          <Fingerprint size={24} className="text-red-600" /> Biometric Devices
         </h1>
         <button
           onClick={() => setShowModal(true)}
-          className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium"
+          className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium"
         >
           <Plus size={16} /> Register Device
         </button>
@@ -117,7 +117,7 @@ export default function DeviceManager() {
                   <p className="text-xs text-slate-400">{d.location || 'No location set'}</p>
                 </div>
                 <span
-                  className={`text-xs px-2 py-0.5 rounded-full ${d.isActive ? 'bg-green-50 text-green-700' : 'bg-slate-100 text-slate-500'}`}
+                  className={`text-xs px-2 py-0.5 rounded-full ${d.isActive ? 'bg-red-50 text-red-700' : 'bg-slate-100 text-slate-500'}`}
                 >
                   {d.isActive ? 'Active' : 'Disabled'}
                 </span>
@@ -185,24 +185,24 @@ export default function DeviceManager() {
                 placeholder="Device serial number"
                 value={form.deviceSerial}
                 onChange={(e) => setForm({ ...form, deviceSerial: e.target.value })}
-                className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100"
+                className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100"
               />
               <input
                 required
                 placeholder="Name (e.g. Front Desk Terminal)"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100"
+                className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100"
               />
               <input
                 placeholder="Location (optional)"
                 value={form.location}
                 onChange={(e) => setForm({ ...form, location: e.target.value })}
-                className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100"
+                className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100"
               />
               <button
                 type="submit"
-                className="w-full bg-green-600 hover:bg-green-700 text-white py-2.5 rounded-lg text-sm font-medium"
+                className="w-full bg-red-600 hover:bg-red-700 text-white py-2.5 rounded-lg text-sm font-medium"
               >
                 Register
               </button>

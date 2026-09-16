@@ -1,4 +1,4 @@
-// components/plans/PlansManager.jsx
+﻿// components/plans/PlansManager.jsx
 'use client';
 import { useEffect, useState, useCallback } from 'react';
 import { useAuth } from '@clerk/nextjs';
@@ -100,10 +100,10 @@ export default function PlansManager() {
     <div className="px-3 sm:px-6 py-4 sm:py-6 pb-28">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl md:text-3xl font-bold text-slate-800 flex items-center gap-2">
-          <Dumbbell size={24} className="text-green-600" /> Membership Plans
+          <Dumbbell size={24} className="text-red-600" /> Membership Plans
         </h1>
         <button onClick={openAdd}
-          className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium">
+          className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium">
           <Plus size={16} /> Add Plan
         </button>
       </div>
@@ -116,12 +116,12 @@ export default function PlansManager() {
             <div key={p.id} className="bg-white rounded-xl border border-slate-200 shadow-sm p-5">
               <div className="flex justify-between items-start">
                 <p className="font-semibold text-slate-800">{p.name}</p>
-                <span className={`text-xs px-2 py-0.5 rounded-full ${p.status === 'ACTIVE' ? 'bg-green-50 text-green-700' : 'bg-slate-100 text-slate-500'}`}>{p.status}</span>
+                <span className={`text-xs px-2 py-0.5 rounded-full ${p.status === 'ACTIVE' ? 'bg-red-50 text-red-700' : 'bg-slate-100 text-slate-500'}`}>{p.status}</span>
               </div>
               <p className="text-2xl font-bold text-slate-800 mt-3">₹{p.price.toLocaleString('en-IN')}</p>
               <p className="text-xs text-slate-500">for {p.durationDays} days</p>
               <div className="flex gap-2 mt-4 pt-4 border-t border-slate-100">
-                <button onClick={() => openEdit(p)} className="text-xs bg-blue-50 hover:bg-blue-100 text-blue-600 px-3 py-2 rounded-lg flex items-center gap-1">
+                <button onClick={() => openEdit(p)} className="text-xs bg-red-50 hover:bg-red-100 text-red-600 px-3 py-2 rounded-lg flex items-center gap-1">
                   <Pencil size={12} /> Edit
                 </button>
                 <button onClick={() => togglePlanStatus(p)} className="flex-1 text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 rounded-lg flex items-center justify-center gap-1">
@@ -143,23 +143,23 @@ export default function PlansManager() {
               <label className="block text-xs font-medium text-slate-600 mb-1">Plan Name</label>
               <input required placeholder="e.g. Monthly Plan" value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100" />
+                className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100" />
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-medium text-slate-600 mb-1">Duration (days)</label>
                 <input required type="number" placeholder="30" value={form.durationDays}
                   onChange={(e) => setForm({ ...form, durationDays: e.target.value })}
-                  className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100" />
+                  className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100" />
               </div>
               <div>
                 <label className="block text-xs font-medium text-slate-600 mb-1">Amount (₹)</label>
                 <input required type="number" placeholder="1000" value={form.price}
                   onChange={(e) => setForm({ ...form, price: e.target.value })}
-                  className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100" />
+                  className="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100" />
               </div>
             </div>
-            <button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white py-2.5 rounded-lg text-sm font-medium">
+            <button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white py-2.5 rounded-lg text-sm font-medium">
               {editingId ? 'Save Changes' : 'Create Plan'}
             </button>
           </form>

@@ -1,4 +1,4 @@
-// components/members/MemberProfile.jsx
+﻿// components/members/MemberProfile.jsx
 'use client';
 import { useEffect, useState } from 'react';
 import { useAuth } from '@clerk/nextjs';
@@ -47,7 +47,7 @@ function DurationTooltip({ active, payload, label }) {
   return (
     <div className="bg-white border border-slate-200 rounded-lg shadow-sm px-3 py-2 text-xs">
       <p className="font-medium text-slate-700">{label}</p>
-      <p className="text-green-600">{formatDuration(payload[0].value)}</p>
+      <p className="text-red-600">{formatDuration(payload[0].value)}</p>
     </div>
   );
 }
@@ -118,7 +118,7 @@ export default function MemberProfile({ basePath, memberId }) {
               className="w-24 h-24 rounded-full object-cover border-2 border-white shadow-md"
             />
           ) : (
-            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center text-white font-bold text-3xl shadow-md">
+            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-white font-bold text-3xl shadow-md">
               {member.fullName.charAt(0).toUpperCase()}
             </div>
           )}
@@ -127,7 +127,7 @@ export default function MemberProfile({ basePath, memberId }) {
             <div className="flex items-center gap-3 flex-wrap">
               <h1 className="text-2xl font-bold text-slate-800">{member.fullName}</h1>
               <span
-                className={`text-xs font-medium px-2.5 py-1 rounded-full ${member.status === 'ACTIVE' ? 'bg-green-50 text-green-700' : 'bg-slate-100 text-slate-500'}`}
+                className={`text-xs font-medium px-2.5 py-1 rounded-full ${member.status === 'ACTIVE' ? 'bg-red-50 text-red-700' : 'bg-slate-100 text-slate-500'}`}
               >
                 {member.status}
               </span>
@@ -146,13 +146,13 @@ export default function MemberProfile({ basePath, memberId }) {
               </Link>
               <button
                 onClick={toggleStatus}
-                className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium ${member.status === 'ACTIVE' ? 'bg-red-50 text-red-600 hover:bg-red-100' : 'bg-green-50 text-green-700 hover:bg-green-100'}`}
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium ${member.status === 'ACTIVE' ? 'bg-red-50 text-red-600 hover:bg-red-100' : 'bg-red-50 text-red-700 hover:bg-red-100'}`}
               >
                 <Power size={14} /> {member.status === 'ACTIVE' ? 'Deactivate' : 'Activate'}
               </button>
               <Link
                 href={`/store/checkout`}
-                className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium"
+                className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium"
               >
                 <PlusCircle size={14} /> Renew / Add Plan
               </Link>
@@ -209,7 +209,7 @@ export default function MemberProfile({ basePath, memberId }) {
               ? 'bg-red-50 border-red-200'
               : activeMembership.daysRemaining <= 7
                 ? 'bg-amber-50 border-amber-200'
-                : 'bg-green-50 border-green-200'
+                : 'bg-red-50 border-red-200'
         }`}
       >
         <div className="flex items-center gap-3">
@@ -218,7 +218,7 @@ export default function MemberProfile({ basePath, memberId }) {
           ) : activeMembership.daysRemaining <= 7 ? (
             <AlertTriangle size={20} className="text-amber-600" />
           ) : (
-            <CheckCircle2 size={20} className="text-green-600" />
+            <CheckCircle2 size={20} className="text-red-600" />
           )}
           <div>
             {!activeMembership ? (
@@ -241,7 +241,7 @@ export default function MemberProfile({ basePath, memberId }) {
         {(!activeMembership || activeMembership.daysRemaining <= 7) && (
           <Link
             href="/store/checkout"
-            className="text-xs font-medium bg-white border border-slate-200 hover:border-green-400 px-3 py-1.5 rounded-lg text-slate-700"
+            className="text-xs font-medium bg-white border border-slate-200 hover:border-red-400 px-3 py-1.5 rounded-lg text-slate-700"
           >
             Renew Now
           </Link>
@@ -257,7 +257,7 @@ export default function MemberProfile({ basePath, memberId }) {
               onClick={() => setTab(t.id)}
               className={`flex items-center gap-2 px-5 py-3.5 text-sm font-medium border-b-2 whitespace-nowrap transition-colors ${
                 tab === t.id
-                  ? 'border-green-600 text-green-700'
+                  ? 'border-green-600 text-red-700'
                   : 'border-transparent text-slate-500 hover:text-slate-700'
               }`}
             >
@@ -339,7 +339,7 @@ export default function MemberProfile({ basePath, memberId }) {
                       width={55}
                     />
                     <Tooltip content={<DurationTooltip />} />
-                    <Bar dataKey="minutes" fill="#3b82f6" radius={[4, 4, 0, 0]} maxBarSize={22} />
+                    <Bar dataKey="minutes" fill="#CC0010" radius={[4, 4, 0, 0]} maxBarSize={22} />
                   </BarChart>
                 </ResponsiveContainer>
               </>
@@ -363,7 +363,7 @@ export default function MemberProfile({ basePath, memberId }) {
                       domain={[0, Math.max(4, maxVisits + 1)]}
                     />
                     <Tooltip />
-                    <Bar dataKey="count" fill="#16a34a" radius={[6, 6, 0, 0]} maxBarSize={40} />
+                    <Bar dataKey="count" fill="#E60012" radius={[6, 6, 0, 0]} maxBarSize={40} />
                   </BarChart>
                 </ResponsiveContainer>
               </>

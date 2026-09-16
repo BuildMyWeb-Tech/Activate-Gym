@@ -1,4 +1,4 @@
-// app/employee/categories/page.jsx
+﻿// app/employee/categories/page.jsx
 'use client';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -44,7 +44,7 @@ export default function EmployeeCategoriesPage() {
 
   // Updated: use isGlobal boolean
   const ScopeBadge = ({ cat }) => (
-    <span className={`inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full font-medium ${cat.isGlobal ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700'}`}>
+    <span className={`inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full font-medium ${cat.isGlobal ? 'bg-purple-100 text-purple-700' : 'bg-red-100 text-red-700'}`}>
       {cat.isGlobal ? <><Globe size={10} /> Global</> : <><Store size={10} /> Store</>}
     </span>
   );
@@ -67,13 +67,13 @@ export default function EmployeeCategoriesPage() {
     <div className="max-w-6xl mx-auto pb-20">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
         <div>
-          <h1 className="text-2xl text-slate-800 font-bold flex items-center gap-2"><div className="p-2 bg-green-50 rounded-lg text-green-600"><Layers size={24} /></div> Product Categories</h1>
+          <h1 className="text-2xl text-slate-800 font-bold flex items-center gap-2"><div className="p-2 bg-red-50 rounded-lg text-red-600"><Layers size={24} /></div> Product Categories</h1>
           <p className="text-slate-500 text-sm mt-1">
-            <span className="text-purple-600 font-medium">Global</span> = admin categories. <span className="text-blue-600 font-medium">Store</span> = store categories.
+            <span className="text-purple-600 font-medium">Global</span> = admin categories. <span className="text-red-600 font-medium">Store</span> = store categories.
           </p>
         </div>
-        <div className="bg-blue-50 border border-blue-100 rounded-lg px-3 py-2 text-xs text-blue-700 flex items-center gap-1.5">
-          <Info size={13} className="text-blue-500" /> View only
+        <div className="bg-red-50 border border-red-100 rounded-lg px-3 py-2 text-xs text-red-700 flex items-center gap-1.5">
+          <Info size={13} className="text-red-500" /> View only
         </div>
       </div>
 
@@ -81,13 +81,13 @@ export default function EmployeeCategoriesPage() {
         <div className="p-4 border-b border-slate-100 flex flex-col sm:flex-row justify-between gap-3">
           <div className="relative flex-grow max-w-md">
             <input type="text" placeholder="Search categories..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-10 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-100 bg-slate-50" />
+              className="w-full pl-10 pr-10 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-100 bg-slate-50" />
             <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             {searchTerm && <button onClick={() => setSearchTerm('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"><X size={16} /></button>}
           </div>
           <div className="border border-slate-200 rounded-lg flex overflow-hidden">
-            <button onClick={() => setViewMode('grid')} className={`p-2.5 ${viewMode === 'grid' ? 'bg-green-50 text-green-600' : 'text-slate-500'}`}><LayoutGrid size={18} /></button>
-            <button onClick={() => setViewMode('list')} className={`p-2.5 ${viewMode === 'list' ? 'bg-green-50 text-green-600' : 'text-slate-500'}`}><List size={18} /></button>
+            <button onClick={() => setViewMode('grid')} className={`p-2.5 ${viewMode === 'grid' ? 'bg-red-50 text-red-600' : 'text-slate-500'}`}><LayoutGrid size={18} /></button>
+            <button onClick={() => setViewMode('list')} className={`p-2.5 ${viewMode === 'list' ? 'bg-red-50 text-red-600' : 'text-slate-500'}`}><List size={18} /></button>
           </div>
         </div>
 
@@ -136,8 +136,8 @@ export default function EmployeeCategoriesPage() {
         )}
       </div>
 
-      <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 text-sm text-blue-700 flex items-start gap-3">
-        <Info size={18} className="text-blue-500 mt-0.5 flex-shrink-0" />
+      <div className="bg-red-50 border border-red-100 rounded-lg p-4 text-sm text-red-700 flex items-start gap-3">
+        <Info size={18} className="text-red-500 mt-0.5 flex-shrink-0" />
         Categories are <strong className="mx-1">view-only</strong> in the employee portal.
       </div>
     </div>

@@ -1,4 +1,4 @@
-// components/admin/BranchInfo.jsx
+﻿// components/admin/BranchInfo.jsx
 'use client'
 import Image from "next/image"
 import { MapPin, Mail, Phone, Globe, Calendar, CheckCircle, Clock, BadgeAlert } from "lucide-react"
@@ -6,7 +6,7 @@ import { MapPin, Mail, Phone, Globe, Calendar, CheckCircle, Clock, BadgeAlert } 
 const BranchInfo = ({ branch }) => {
     const statusIcons = {
         PENDING:  <Clock size={14} className="text-yellow-600" />,
-        ACTIVE:   <CheckCircle size={14} className="text-green-600" />,
+        ACTIVE:   <CheckCircle size={14} className="text-red-600" />,
         REJECTED: <BadgeAlert size={14} className="text-red-600" />,
     }
 
@@ -21,7 +21,7 @@ const BranchInfo = ({ branch }) => {
                     />
                     <span className={`absolute -bottom-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center ${
                         branch.status === 'PENDING' ? 'bg-yellow-100' :
-                        branch.status === 'REJECTED' ? 'bg-red-100' : 'bg-green-100'
+                        branch.status === 'REJECTED' ? 'bg-red-100' : 'bg-red-100'
                     }`}>
                         {statusIcons[branch.status]}
                     </span>
@@ -34,7 +34,7 @@ const BranchInfo = ({ branch }) => {
                         <span className={`text-xs font-semibold px-3 py-1 rounded-full ${
                             branch.status === 'PENDING' ? 'bg-yellow-100 text-yellow-800'
                             : branch.status === 'REJECTED' ? 'bg-red-100 text-red-800'
-                            : 'bg-green-100 text-green-800'
+                            : 'bg-red-100 text-red-800'
                         }`}>
                             {branch.status}
                         </span>

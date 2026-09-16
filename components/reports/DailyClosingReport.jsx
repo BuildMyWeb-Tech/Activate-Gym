@@ -1,4 +1,4 @@
-// components/reports/DailyClosingReport.jsx
+﻿// components/reports/DailyClosingReport.jsx
 'use client';
 import { useEffect, useState, useCallback } from 'react';
 import { useAuth } from '@clerk/nextjs';
@@ -13,8 +13,8 @@ import {
 
 const PAYMENT_LABELS = { CASH: 'Cash', UPI: 'UPI', CARD: 'Card', RAZORPAY: 'Razorpay' };
 const PAYMENT_COLORS = {
-  CASH: 'bg-green-100 text-green-700',
-  UPI: 'bg-blue-100 text-blue-700',
+  CASH: 'bg-red-100 text-red-700',
+  UPI: 'bg-red-100 text-red-700',
   CARD: 'bg-purple-100 text-purple-700',
   RAZORPAY: 'bg-amber-100 text-amber-700',
 };
@@ -94,7 +94,7 @@ export default function DailyClosingReport() {
     <div className="px-3 sm:px-6 py-4 sm:py-6 pb-28">
       <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
         <h1 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
-          <FileText size={22} className="text-blue-600" /> Daily Closing Report
+          <FileText size={22} className="text-red-600" /> Daily Closing Report
         </h1>
         <div className="flex items-center gap-2">
           <input
@@ -102,7 +102,7 @@ export default function DailyClosingReport() {
             value={date}
             max={todayIST()}
             onChange={(e) => setDate(e.target.value)}
-            className="border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-400"
+            className="border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400"
           />
           <button
             onClick={() => load(date)}
@@ -113,7 +113,7 @@ export default function DailyClosingReport() {
           {report && (
             <button
               onClick={() => downloadCSV(report)}
-              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700"
+              className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white text-sm rounded-lg hover:bg-red-700"
             >
               <Download size={14} /> Export CSV
             </button>
@@ -127,7 +127,7 @@ export default function DailyClosingReport() {
         <div className="space-y-6">
           {/* Summary Cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <StatCard icon={TrendingUp} label="Total Revenue" value={formatINR(report.revenue.total)} color="text-green-700" />
+            <StatCard icon={TrendingUp} label="Total Revenue" value={formatINR(report.revenue.total)} color="text-red-700" />
             <StatCard icon={CreditCard} label="Paid Orders" value={report.paidOrders} sub={`of ${report.totalOrders} total`} />
             <StatCard icon={CalendarCheck} label="Attendance" value={report.totalAttendance} />
             <StatCard icon={UserPlus} label="New Members" value={report.newMembers} />
@@ -135,7 +135,7 @@ export default function DailyClosingReport() {
 
           {/* Secondary row */}
           <div className="grid grid-cols-2 gap-4">
-            <StatCard icon={RefreshCcw} label="Renewals" value={report.renewals} sub="members with prior history" color="text-blue-700" />
+            <StatCard icon={RefreshCcw} label="Renewals" value={report.renewals} sub="members with prior history" color="text-red-700" />
             <StatCard icon={ShoppingBag} label="Total Orders" value={report.totalOrders} />
           </div>
 
@@ -186,7 +186,7 @@ export default function DailyClosingReport() {
                           </span>
                         </td>
                         <td className="px-5 py-3">
-                          <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${o.isPaid ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}`}>
+                          <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${o.isPaid ? 'bg-red-100 text-red-700' : 'bg-amber-100 text-amber-700'}`}>
                             {o.isPaid ? 'Paid' : 'Pending'}
                           </span>
                         </td>

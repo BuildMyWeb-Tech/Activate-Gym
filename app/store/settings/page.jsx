@@ -1,4 +1,4 @@
-// app/store/settings/page.jsx
+﻿// app/store/settings/page.jsx
 'use client';
 import { useEffect, useState } from 'react';
 import { useAuth } from '@clerk/nextjs';
@@ -90,7 +90,7 @@ export default function BranchSettingsPage() {
       <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-slate-800 flex items-center gap-2">
-            <Dumbbell size={24} className="text-green-600" /> Branch Settings
+            <Dumbbell size={24} className="text-red-600" /> Branch Settings
           </h1>
           <p className="text-sm text-slate-500 mt-1">Update your branch's information</p>
         </div>
@@ -104,7 +104,7 @@ export default function BranchSettingsPage() {
           <button
             onClick={onSave}
             disabled={saving}
-            className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium disabled:opacity-60"
+            className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium disabled:opacity-60"
           >
             {saving ? (
               <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
@@ -118,8 +118,8 @@ export default function BranchSettingsPage() {
 
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm max-w-2xl">
         <div className="flex items-start gap-3 p-5 border-b border-slate-100">
-          <div className="w-9 h-9 rounded-lg bg-green-50 flex items-center justify-center flex-shrink-0">
-            <Dumbbell size={17} className="text-green-600" />
+          <div className="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center flex-shrink-0">
+            <Dumbbell size={17} className="text-red-600" />
           </div>
           <div>
             <p className="font-semibold text-slate-800">Branch Information</p>
@@ -138,7 +138,7 @@ export default function BranchSettingsPage() {
               name="name"
               value={form.name}
               onChange={onChange}
-              className="w-full px-3.5 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400"
+              className="w-full px-3.5 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400"
             />
           </div>
 
@@ -153,7 +153,7 @@ export default function BranchSettingsPage() {
                 value={form.description}
                 onChange={onChange}
                 rows={3}
-                className="w-full pl-9 pr-3.5 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400 resize-none"
+                className="w-full pl-9 pr-3.5 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400 resize-none"
               />
             </div>
           </div>
@@ -169,7 +169,7 @@ export default function BranchSettingsPage() {
                 value={form.address}
                 onChange={onChange}
                 rows={2}
-                className="w-full pl-9 pr-3.5 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400 resize-none"
+                className="w-full pl-9 pr-3.5 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400 resize-none"
               />
             </div>
           </div>
@@ -189,7 +189,7 @@ export default function BranchSettingsPage() {
                   value={form.phone}
                   onChange={onChange}
                   type="tel"
-                  className="w-full pl-9 pr-3.5 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400"
+                  className="w-full pl-9 pr-3.5 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400"
                 />
               </div>
             </div>
@@ -207,7 +207,7 @@ export default function BranchSettingsPage() {
                   value={form.contact}
                   onChange={onChange}
                   type="tel"
-                  className="w-full pl-9 pr-3.5 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400"
+                  className="w-full pl-9 pr-3.5 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400"
                 />
               </div>
             </div>
@@ -231,7 +231,7 @@ export default function BranchSettingsPage() {
                 onChange={onChange}
                 type="tel"
                 placeholder="e.g. 9876543210"
-                className="w-full pl-9 pr-3.5 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400"
+                className="w-full pl-9 pr-3.5 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400"
               />
             </div>
           </div>
@@ -247,7 +247,7 @@ export default function BranchSettingsPage() {
                 value={form.email}
                 onChange={onChange}
                 type="email"
-                className="w-full pl-9 pr-3.5 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400"
+                className="w-full pl-9 pr-3.5 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400"
               />
             </div>
           </div>
@@ -267,7 +267,7 @@ export default function BranchSettingsPage() {
                   value={form.operatingHours}
                   onChange={onChange}
                   placeholder="6:00 AM - 10:00 PM"
-                  className="w-full pl-9 pr-3.5 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400"
+                  className="w-full pl-9 pr-3.5 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400"
                 />
               </div>
             </div>
@@ -280,7 +280,7 @@ export default function BranchSettingsPage() {
                 value={form.gstNumber}
                 onChange={onChange}
                 placeholder="Optional"
-                className="w-full px-3.5 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400"
+                className="w-full px-3.5 py-2.5 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400"
               />
             </div>
           </div>

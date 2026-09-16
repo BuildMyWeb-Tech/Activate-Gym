@@ -34,9 +34,9 @@ const StoreNavbar = ({ branchInfo, mobileMenuOpen, setMobileMenuOpen, employee }
           href="/store"
           className="relative text-3xl font-semibold text-slate-700 flex items-center gap-2"
         >
-          <Dumbbell className="text-green-600" size={26} />
-          GymDesk
-          <div className="absolute text-xs font-semibold -top-1.5 -right-14 px-3 py-0.5 rounded-full text-white bg-gradient-to-r from-green-500 to-green-600 shadow-sm">
+          <Dumbbell className="text-red-600" size={26} />
+          Activate Gym
+          <div className="absolute text-xs font-semibold -top-1.5 -right-14 px-3 py-0.5 rounded-full text-white bg-gradient-to-r from-red-600 to-red-700 shadow-sm">
             Branch
           </div>
         </Link>
@@ -51,7 +51,7 @@ const StoreNavbar = ({ branchInfo, mobileMenuOpen, setMobileMenuOpen, employee }
 
           {isEmployeeMode ? (
             <div className="flex items-center gap-1.5">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center text-white font-bold text-sm shadow-sm">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center text-white font-bold text-sm shadow-sm">
                 {avatarLetter}
               </div>
               <button

@@ -1,4 +1,4 @@
-// app/store/categories/page.jsx
+﻿// app/store/categories/page.jsx
 'use client';
 import { useAuth } from '@clerk/nextjs';
 import axios from 'axios';
@@ -141,7 +141,7 @@ export default function StoreCategoriesPage() {
   };
 
   const ScopeBadge = ({ cat }) => (
-    <span className={`inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full font-medium ${cat.isGlobal ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700'}`}>
+    <span className={`inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full font-medium ${cat.isGlobal ? 'bg-purple-100 text-purple-700' : 'bg-red-100 text-red-700'}`}>
       {cat.isGlobal ? <><Globe size={10} /> Global</> : <><Store size={10} /> Mine</>}
     </span>
   );
@@ -165,12 +165,12 @@ export default function StoreCategoriesPage() {
               <label className="block text-sm font-medium text-slate-700 mb-2">
                 Image {!editingId && <span className="text-red-500">*</span>}
               </label>
-              <div className="bg-slate-50 border-2 border-dashed border-slate-200 rounded-lg flex flex-col items-center justify-center h-48 relative overflow-hidden cursor-pointer group hover:border-green-400 transition-colors"
+              <div className="bg-slate-50 border-2 border-dashed border-slate-200 rounded-lg flex flex-col items-center justify-center h-48 relative overflow-hidden cursor-pointer group hover:border-red-400 transition-colors"
                 onClick={() => fileInputRef.current?.click()}>
                 {imagePreview ? (
-                  <><Image src={imagePreview} alt="Preview" fill className="object-cover group-hover:opacity-80" /><div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all"><div className="bg-white rounded-full p-2.5"><Upload size={20} className="text-green-600" /></div></div></>
+                  <><Image src={imagePreview} alt="Preview" fill className="object-cover group-hover:opacity-80" /><div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all"><div className="bg-white rounded-full p-2.5"><Upload size={20} className="text-red-600" /></div></div></>
                 ) : (
-                  <><div className="bg-green-50 p-3 rounded-full mb-2 text-green-500"><ImagePlus size={28} /></div><p className="text-slate-700 text-sm font-medium">Upload image</p></>
+                  <><div className="bg-red-50 p-3 rounded-full mb-2 text-red-500"><ImagePlus size={28} /></div><p className="text-slate-700 text-sm font-medium">Upload image</p></>
                 )}
                 <input ref={fileInputRef} type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
               </div>
@@ -181,15 +181,15 @@ export default function StoreCategoriesPage() {
             <div className="md:col-span-2 space-y-4">
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Name <span className="text-red-500">*</span></label>
-                <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="e.g. Premium Shirts" required className="w-full p-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-100 bg-slate-50" />
+                <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="e.g. Premium Shirts" required className="w-full p-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-100 bg-slate-50" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Description <span className="text-red-500">*</span></label>
-                <textarea value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} rows={4} required className="w-full p-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-100 bg-slate-50 resize-none" />
+                <textarea value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} rows={4} required className="w-full p-3 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-100 bg-slate-50 resize-none" />
               </div>
               {!editingId && (
-                <div className="flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-lg p-3 text-sm text-blue-700">
-                  <Store size={16} className="text-blue-500 flex-shrink-0" />
+                <div className="flex items-center gap-2 bg-red-50 border border-red-100 rounded-lg p-3 text-sm text-red-700">
+                  <Store size={16} className="text-red-500 flex-shrink-0" />
                   This will be a <strong className="mx-1">store-scoped</strong> category visible to your customers.
                 </div>
               )}
@@ -197,7 +197,7 @@ export default function StoreCategoriesPage() {
 
             <div className="md:col-span-3 flex flex-col-reverse sm:flex-row sm:justify-end gap-3 pt-4 border-t border-slate-100">
               <button type="button" onClick={closeForm} disabled={submitting} className="w-full sm:w-auto px-4 py-2.5 bg-white border border-slate-200 rounded-lg text-slate-600 hover:bg-slate-50 text-sm">Cancel</button>
-              <button type="submit" disabled={submitting} className={`w-full sm:w-auto px-5 py-2.5 rounded-lg text-white flex items-center justify-center gap-1.5 text-sm font-medium disabled:opacity-70 ${editingId ? 'bg-indigo-600 hover:bg-indigo-700' : 'bg-green-600 hover:bg-green-700'}`}>
+              <button type="submit" disabled={submitting} className={`w-full sm:w-auto px-5 py-2.5 rounded-lg text-white flex items-center justify-center gap-1.5 text-sm font-medium disabled:opacity-70 ${editingId ? 'bg-indigo-600 hover:bg-indigo-700' : 'bg-red-600 hover:bg-red-700'}`}>
                 {submitting ? <><Loader2 size={16} className="animate-spin" /> Saving...</> : editingId ? <><Pencil size={16} /> Save Changes</> : <><PlusCircle size={16} /> Add Category</>}
               </button>
             </div>
@@ -212,12 +212,12 @@ export default function StoreCategoriesPage() {
     <div className="px-3 sm:px-6 py-4 sm:py-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
         <div>
-          <h1 className="text-xl sm:text-2xl text-slate-800 font-bold flex items-center gap-2"><div className="p-2 bg-green-50 rounded-lg text-green-600"><Layers size={22} /></div> Product Categories</h1>
+          <h1 className="text-xl sm:text-2xl text-slate-800 font-bold flex items-center gap-2"><div className="p-2 bg-red-50 rounded-lg text-red-600"><Layers size={22} /></div> Product Categories</h1>
           <p className="text-slate-500 text-sm mt-1">
-            <span className="text-purple-600 font-medium">Global</span> = admin categories (read-only). <span className="text-blue-600 font-medium">Mine</span> = your store categories (editable).
+            <span className="text-purple-600 font-medium">Global</span> = admin categories (read-only). <span className="text-red-600 font-medium">Mine</span> = your store categories (editable).
           </p>
         </div>
-        <button onClick={openAddForm} className="w-full sm:w-auto justify-center bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-lg flex items-center gap-2 text-sm font-medium">
+        <button onClick={openAddForm} className="w-full sm:w-auto justify-center bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-lg flex items-center gap-2 text-sm font-medium">
           <PlusCircle size={18} /> Add Category
         </button>
       </div>
@@ -226,12 +226,12 @@ export default function StoreCategoriesPage() {
         <div className="p-4 border-b border-slate-100 flex flex-col sm:flex-row justify-between gap-3">
           <div className="relative flex-grow max-w-md">
             <input type="text" placeholder="Search categories..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-100 bg-slate-50" />
+              className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-100 bg-slate-50" />
             <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
           </div>
           <div className="border border-slate-200 rounded-lg flex overflow-hidden self-start">
-            <button onClick={() => setViewMode('grid')} className={`p-2.5 ${viewMode === 'grid' ? 'bg-green-50 text-green-600' : 'text-slate-500 hover:bg-slate-50'}`}><LayoutGrid size={18} /></button>
-            <button onClick={() => setViewMode('list')} className={`p-2.5 ${viewMode === 'list' ? 'bg-green-50 text-green-600' : 'text-slate-500 hover:bg-slate-50'}`}><List size={18} /></button>
+            <button onClick={() => setViewMode('grid')} className={`p-2.5 ${viewMode === 'grid' ? 'bg-red-50 text-red-600' : 'text-slate-500 hover:bg-slate-50'}`}><LayoutGrid size={18} /></button>
+            <button onClick={() => setViewMode('list')} className={`p-2.5 ${viewMode === 'list' ? 'bg-red-50 text-red-600' : 'text-slate-500 hover:bg-slate-50'}`}><List size={18} /></button>
           </div>
         </div>
 
@@ -304,9 +304,9 @@ export default function StoreCategoriesPage() {
         )}
       </div>
 
-      <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 text-sm text-blue-700 flex items-start gap-3">
-        <Info size={18} className="text-blue-500 mt-0.5 flex-shrink-0" />
-        <p><span className="font-medium text-blue-800">Tip: </span>Create store categories for your product line. Global categories come from the admin.</p>
+      <div className="bg-red-50 border border-red-100 rounded-lg p-4 text-sm text-red-700 flex items-start gap-3">
+        <Info size={18} className="text-red-500 mt-0.5 flex-shrink-0" />
+        <p><span className="font-medium text-red-800">Tip: </span>Create store categories for your product line. Global categories come from the admin.</p>
       </div>
 
       {/* Delete Modal */}

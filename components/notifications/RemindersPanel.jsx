@@ -1,4 +1,4 @@
-// components/notifications/RemindersPanel.jsx
+﻿// components/notifications/RemindersPanel.jsx
 'use client';
 import { useEffect, useState, useCallback } from 'react';
 import { useAuth } from '@clerk/nextjs';
@@ -14,7 +14,7 @@ import {
 function StatusBadge({ status }) {
   if (!status) return <span className="text-xs text-slate-400">Not sent</span>;
   const map = {
-    SENT: 'bg-green-100 text-green-700',
+    SENT: 'bg-red-100 text-red-700',
     FAILED: 'bg-red-100 text-red-700',
     PENDING: 'bg-amber-100 text-amber-700',
   };
@@ -30,7 +30,7 @@ function SendBtn({ onClick, loading, sent }) {
     <button
       onClick={onClick}
       disabled={loading}
-      className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border border-green-200 bg-green-50 text-green-700 hover:bg-green-100 disabled:opacity-50 transition-colors"
+      className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border border-red-200 bg-red-50 text-red-700 hover:bg-red-100 disabled:opacity-50 transition-colors"
     >
       {loading ? (
         <span className="w-3 h-3 border border-green-600/40 border-t-green-600 rounded-full animate-spin" />
@@ -108,7 +108,7 @@ function ExpiryRemindersTab({ basePath }) {
   if (!data?.groups?.length) {
     return (
       <div className="flex flex-col items-center py-16 text-slate-400">
-        <CheckCircle2 size={40} className="mb-3 text-green-400" />
+        <CheckCircle2 size={40} className="mb-3 text-red-400" />
         <p className="font-medium text-slate-600">No memberships expiring in the next 7 days</p>
       </div>
     );
@@ -125,7 +125,7 @@ function ExpiryRemindersTab({ basePath }) {
           <span className="font-semibold text-slate-800">{data.total}</span> memberships expiring •{' '}
           <span className="font-semibold text-amber-600">{pendingCount}</span> reminders pending
         </p>
-        <button onClick={sendAll} className="flex items-center gap-2 text-sm px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+        <button onClick={sendAll} className="flex items-center gap-2 text-sm px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
           <Send size={14} /> Send All Pending
         </button>
       </div>
@@ -231,7 +231,7 @@ function PaymentDueTab() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search by name or phone…"
-          className="flex-1 px-4 py-2 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-green-100 focus:border-green-400"
+          className="flex-1 px-4 py-2 border border-slate-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-red-100 focus:border-red-400"
         />
       </div>
 
@@ -239,7 +239,7 @@ function PaymentDueTab() {
         <Loading />
       ) : !data?.members?.length ? (
         <div className="flex flex-col items-center py-16 text-slate-400">
-          <CheckCircle2 size={40} className="mb-3 text-green-400" />
+          <CheckCircle2 size={40} className="mb-3 text-red-400" />
           <p className="font-medium text-slate-600">No pending renewals found</p>
         </div>
       ) : (
@@ -329,7 +329,7 @@ export default function RemindersPanel({ basePath }) {
             onClick={() => setTab(key)}
             className={`flex items-center gap-2 px-5 py-2.5 text-sm font-medium border-b-2 -mb-px transition-colors ${
               tab === key
-                ? 'border-green-500 text-green-700'
+                ? 'border-red-500 text-red-700'
                 : 'border-transparent text-slate-500 hover:text-slate-700'
             }`}
           >

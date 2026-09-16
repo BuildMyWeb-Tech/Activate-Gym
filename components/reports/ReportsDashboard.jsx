@@ -1,4 +1,4 @@
-// components/reports/ReportsDashboard.jsx
+﻿// components/reports/ReportsDashboard.jsx
 'use client';
 import { useEffect, useState, useCallback } from 'react';
 import { useAuth } from '@clerk/nextjs';
@@ -37,8 +37,8 @@ const PERIODS = [
 
 function StatCard({ title, value, icon: Icon, color }) {
   const colorMap = {
-    green: { bg: 'bg-green-50', icon: 'bg-green-100 text-green-600', val: 'text-green-700' },
-    blue: { bg: 'bg-blue-50', icon: 'bg-blue-100 text-blue-600', val: 'text-blue-700' },
+    green: { bg: 'bg-red-50', icon: 'bg-red-100 text-red-600', val: 'text-red-700' },
+    blue: { bg: 'bg-red-50', icon: 'bg-red-100 text-red-600', val: 'text-red-700' },
     amber: { bg: 'bg-amber-50', icon: 'bg-amber-100 text-amber-600', val: 'text-amber-700' },
     red: { bg: 'bg-red-50', icon: 'bg-red-100 text-red-600', val: 'text-red-700' },
     purple: { bg: 'bg-purple-50', icon: 'bg-purple-100 text-purple-600', val: 'text-purple-700' },
@@ -161,7 +161,7 @@ export default function ReportsDashboard({ isAdmin = false }) {
             <select
               value={branchFilter}
               onChange={(e) => setBranchFilter(e.target.value)}
-              className="border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-green-100"
+              className="border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-red-100"
             >
               <option value="">All Branches</option>
               {branches.map((b) => (
@@ -175,7 +175,7 @@ export default function ReportsDashboard({ isAdmin = false }) {
             <button
               key={p.id}
               onClick={() => setPeriod(p.id)}
-              className={`text-xs px-3 py-2 rounded-lg font-medium ${period === p.id ? 'bg-green-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+              className={`text-xs px-3 py-2 rounded-lg font-medium ${period === p.id ? 'bg-red-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
             >
               {p.label}
             </button>
@@ -243,7 +243,7 @@ export default function ReportsDashboard({ isAdmin = false }) {
                 <Line
                   type="monotone"
                   dataKey="revenue"
-                  stroke="#16a34a"
+                  stroke="#E60012"
                   strokeWidth={2.5}
                   dot={{ r: 3 }}
                 />
@@ -265,7 +265,7 @@ export default function ReportsDashboard({ isAdmin = false }) {
                 <XAxis dataKey="label" tick={{ fontSize: 10 }} />
                 <YAxis allowDecimals={false} tick={{ fontSize: 10 }} />
                 <Tooltip />
-                <Bar dataKey="count" fill="#3b82f6" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="count" fill="#CC0010" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           )}
@@ -298,7 +298,7 @@ export default function ReportsDashboard({ isAdmin = false }) {
         <button
           onClick={() => exportPDF('orders')}
           disabled={exportingType === 'orders'}
-          className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-900 text-white px-4 py-2.5 rounded-lg text-sm font-medium disabled:opacity-60"
+          className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium disabled:opacity-60"
         >
           {exportingType === 'orders' ? (
             <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
@@ -310,7 +310,7 @@ export default function ReportsDashboard({ isAdmin = false }) {
         <button
           onClick={() => exportPDF('attendance')}
           disabled={exportingType === 'attendance'}
-          className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-900 text-white px-4 py-2.5 rounded-lg text-sm font-medium disabled:opacity-60"
+          className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 rounded-lg text-sm font-medium disabled:opacity-60"
         >
           {exportingType === 'attendance' ? (
             <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
