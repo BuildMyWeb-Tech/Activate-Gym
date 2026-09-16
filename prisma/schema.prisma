@@ -1,0 +1,437 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ─── USER (Clerk identity — branch owner and/or member) ──────────────────────
+
+model User {
+  id       String   @id
+  name     String
+  email    String
+  image    String
+
+  branch   Branch?
+  member   Member?
+}
+
+// ─── BRANCH (was Store) ───────────────────────────────────────────────────────
+
+model Branch {
+  id              String          @id @default(cuid())
+  userId          String          @unique
+  name            String
+  description     String
+  username        String          @unique
+  address         String
+  phone           String
+  whatsappNumber  String?
+  status          BranchStatus    @default(PENDING)
+  isActive        Boolean         @default(false)
+  logo            String
+  email           String
+  contact         String
+  operatingHours  String?
+  gstNumber       String?
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  user            User            @relation(fields: [userId], references: [id])
+  employees       Employee[]
+  planCategories  PlanCategory[]
+  membershipPlans MembershipPlan[]
+  ptPackages      PTPackage[]
+  members         Member[]
+  orders          Order[]
+  devices         BiometricDevice[]
+  commission      Commission?
+
+  @@index([status])
+  @@index([isActive])
+}
+
+// ─── COMMISSION ────────────────────────────────────────────────────────────────
+
+model Commission {
+  id         String   @id @default(cuid())
+  branchId   String   @unique
+  percentage Float    @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  branch     Branch   @relation(fields: [branchId], references: [id], onDelete: Cascade)
+}
+
+// ─── EMPLOYEE (Receptionist / branch staff) ────────────────────────────────────
+
+model Employee {
+  id          String       @id @default(cuid())
+  name        String
+  email       String       @unique
+  password    String
+  branchId    String
+  role        EmployeeRole @default(RECEPTIONIST)
+  permissions Json         @default("{}")
+  isActive    Boolean      @default(true)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  branch      Branch       @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  attendanceCorrections Attendance[] @relation("CorrectedByEmployee")
+
+  @@index([branchId])
+  @@index([email])
+}
+
+// ─── PLAN CATEGORY (was Category) ──────────────────────────────────────────────
+
+model PlanCategory {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  image       String?
+  isGlobal    Boolean  @default(false)
+  branchId    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  branch      Branch?          @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  plans       MembershipPlan[]
+
+  @@unique([name, branchId])
+  @@index([branchId])
+  @@index([isGlobal])
+}
+
+// ─── MEMBERSHIP PLAN (was Product) ─────────────────────────────────────────────
+
+model MembershipPlan {
+  id            String        @id @default(cuid())
+  branchId      String
+  categoryId    String?
+  name          String
+  slug          String
+  description   String
+  durationDays  Int
+  price         Float
+  features      String[]      @default([])
+  status        PlanStatus    @default(ACTIVE)
+  createdBy     String
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  branch        Branch        @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  category      PlanCategory? @relation(fields: [categoryId], references: [id])
+  memberships   Membership[]
+  orderItems    OrderItem[]
+
+  @@unique([slug, branchId])
+  @@index([branchId])
+  @@index([status])
+}
+
+// ─── PT PACKAGE (new — personal training add-on) ──────────────────────────────
+
+model PTPackage {
+  id           String      @id @default(cuid())
+  branchId     String
+  name         String
+  sessionCount Int
+  price        Float
+  trainerName  String?
+  isActive     Boolean     @default(true)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  branch       Branch      @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  orderItems   OrderItem[]
+
+  @@index([branchId])
+}
+
+// ─── MEMBER (new — gym member profile) ─────────────────────────────────────────
+
+model Member {
+  id                     String    @id @default(cuid())
+  userId                 String?   @unique
+  branchId               String
+  memberCode             String?
+  fullName               String
+  phone                  String
+  photo                  String?
+  dob                    DateTime?
+  gender                 String?
+  address                String?
+  emergencyContactName   String
+  emergencyContactNumber String
+  deviceUserId           String?
+  joinDate               DateTime  @default(now())
+  status                 MemberStatus @default(ACTIVE)
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+
+  user          User?         @relation(fields: [userId], references: [id])
+  branch        Branch        @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  memberships   Membership[]
+  attendances   Attendance[]
+  orders        Order[]
+  notifications NotificationLog[]
+
+  @@unique([branchId, deviceUserId])
+  @@unique([branchId, memberCode])
+  @@index([branchId])
+  @@index([phone])
+  @@index([status])
+}
+// ─── MEMBERSHIP (the subscription instance) ────────────────────────────────────
+
+model Membership {
+  id            String           @id @default(cuid())
+  memberId      String
+  planId        String
+  branchId      String
+  startDate     DateTime
+  expiryDate    DateTime
+  status        MembershipStatus @default(ACTIVE)
+  freezeStart   DateTime?
+  freezeEnd     DateTime?
+  freezeReason  String?
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  member        Member           @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  plan          MembershipPlan   @relation(fields: [planId], references: [id])
+
+  @@index([memberId])
+  @@index([branchId])
+  @@index([status])
+  @@index([expiryDate])
+}
+
+// ─── ATTENDANCE (new) ───────────────────────────────────────────────────────────
+
+model Attendance {
+  id                String            @id @default(cuid())
+  memberId          String
+  branchId          String
+  checkIn           DateTime
+  checkOut          DateTime?
+  method            AttendanceMethod  @default(BIOMETRIC)
+  deviceUserId      String?
+  deviceSerial      String?
+  verified          Boolean           @default(true)
+  correctedById     String?
+  correctionReason  String?
+  createdAt         DateTime          @default(now())
+
+  member            Member            @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  correctedBy       Employee?         @relation("CorrectedByEmployee", fields: [correctedById], references: [id])
+
+  @@index([memberId])
+  @@index([branchId])
+  @@index([checkIn])
+  @@index([verified])
+}
+
+// ─── BIOMETRIC DEVICE (new — maps hardware to branch) ──────────────────────────
+
+model BiometricDevice {
+  id           String    @id @default(cuid())
+  branchId     String
+  deviceSerial String    @unique
+  secret       String    @unique @default(cuid())
+  name         String
+  location     String?
+  isActive     Boolean   @default(true)
+  lastSyncAt   DateTime?
+  createdAt    DateTime  @default(now())
+
+  branch       Branch    @relation(fields: [branchId], references: [id], onDelete: Cascade)
+
+  @@index([branchId])
+}
+
+// ─── ORDER (membership purchase / renewal / bundled cart) ──────────────────────
+
+model Order {
+  id             String          @id @default(cuid())
+  memberId       String
+  branchId       String
+  subtotal       Float
+  commissionAmt  Float           @default(0)
+  total          Float
+  status         OrderStatus     @default(PENDING)
+  isPaid         Boolean         @default(false)
+  paymentMethod  PaymentMethod
+  paymentRef     String?
+  isCouponUsed   Boolean         @default(false)
+  couponCode     String?
+  couponDiscount Float           @default(0)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  member         Member          @relation(fields: [memberId], references: [id])
+  branch         Branch          @relation(fields: [branchId], references: [id])
+  orderItems     OrderItem[]
+  timeline       OrderTimeline[]
+
+  @@index([branchId])
+  @@index([memberId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+// ─── ORDER ITEM (plan / PT package / supplement line item) ─────────────────────
+
+model OrderItem {
+  id               String          @id @default(cuid())
+  orderId          String
+  itemType         OrderItemType
+  membershipPlanId String?
+  ptPackageId      String?
+  name             String
+  quantity         Int             @default(1)
+  price            Float
+
+  order            Order           @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  membershipPlan   MembershipPlan? @relation(fields: [membershipPlanId], references: [id])
+  ptPackage        PTPackage?      @relation(fields: [ptPackageId], references: [id])
+
+  @@index([orderId])
+}
+
+// ─── ORDER TIMELINE ──────────────────────────────────────────────────────────
+
+model OrderTimeline {
+  id        String      @id @default(cuid())
+  orderId   String
+  status    OrderStatus
+  changedBy String
+  note      String?
+  createdAt DateTime    @default(now())
+
+  order     Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+  @@index([createdAt])
+}
+
+// ─── NOTIFICATION LOG (new — Phase 6 reminders) ────────────────────────────────
+
+model NotificationLog {
+  id           String               @id @default(cuid())
+  memberId     String
+  branchId     String
+  channel      NotificationChannel
+  type         NotificationType
+  status       NotificationStatus   @default(PENDING)
+  messageRef   String?
+  errorMessage String?
+  sentAt       DateTime?
+  metadata     Json?
+  createdAt    DateTime             @default(now())
+
+  member       Member               @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  @@index([memberId])
+  @@index([branchId])
+  @@index([type])
+  @@index([status])
+  @@index([createdAt])
+}
+
+// ─── COUPON ──────────────────────────────────────────────────────────────────
+
+model Coupon {
+  code        String   @id
+  description String
+  discount    Float
+  forNewMember Boolean
+  forMember   Boolean  @default(false)
+  isPublic    Boolean
+  expiresAt   DateTime
+  createdAt   DateTime @default(now())
+}
+
+// ─── ENUMS ───────────────────────────────────────────────────────────────────
+
+enum BranchStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  ACTIVE
+  INACTIVE
+}
+
+enum EmployeeRole {
+  RECEPTIONIST
+  MANAGER
+}
+
+enum PlanStatus {
+  ACTIVE
+  INACTIVE
+  DRAFT
+}
+
+enum MemberStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum MembershipStatus {
+  ACTIVE
+  EXPIRED
+  FROZEN
+  CANCELLED
+}
+
+enum AttendanceMethod {
+  BIOMETRIC
+  MANUAL
+  QR
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  ACTIVE
+  CANCELLED
+}
+
+enum OrderItemType {
+  MEMBERSHIP_PLAN
+  PT_PACKAGE
+  SUPPLEMENT
+}
+
+enum PaymentMethod {
+  CASH
+  UPI
+  CARD
+  RAZORPAY
+}
+
+enum NotificationChannel {
+  WHATSAPP
+  SMS
+  EMAIL
+}
+
+enum NotificationType {
+  EXPIRY_REMINDER
+  PAYMENT_DUE
+  RENEWAL_CONFIRMATION
+  ANNOUNCEMENT
+}
+
+enum NotificationStatus {
+  SENT
+  FAILED
+  PENDING
+}
